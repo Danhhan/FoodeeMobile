@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-FoodeeMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FoodeeMobile.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		318A706AC5B846BF9E82D357 /* Sen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3494A5D658041A992DE142E /* Sen-Regular.ttf */; };
+		47D7A64CBB824315B997C591 /* Sen-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8688247C9B74299AB4F7501 /* Sen-SemiBold.ttf */; };
 		5659A9A6ED5AB48038363EF9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		572463F96A9E409AA6DB674F /* Sen-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5FE2CF2B436AA62B7BD6 /* Sen-Medium.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9330AA2D064E4EBB842A46E8 /* Sen-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 546AE16E1F0A440E98D4E37C /* Sen-ExtraBold.ttf */; };
+		A4BA01C000034D83840D7960 /* Sen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1672F47DBEDD4161B8AD53A4 /* Sen-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,11 +24,16 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FoodeeMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FoodeeMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = FoodeeMobile/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1672F47DBEDD4161B8AD53A4 /* Sen-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-Bold.ttf"; path = "../src/assets/fonts/Sen-Bold.ttf"; sourceTree = "<group>"; };
+		20CE5FE2CF2B436AA62B7BD6 /* Sen-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-Medium.ttf"; path = "../src/assets/fonts/Sen-Medium.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-FoodeeMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodeeMobile.debug.xcconfig"; path = "Target Support Files/Pods-FoodeeMobile/Pods-FoodeeMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		546AE16E1F0A440E98D4E37C /* Sen-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-ExtraBold.ttf"; path = "../src/assets/fonts/Sen-ExtraBold.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-FoodeeMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodeeMobile.release.xcconfig"; path = "Target Support Files/Pods-FoodeeMobile/Pods-FoodeeMobile.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-FoodeeMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodeeMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FoodeeMobile/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FoodeeMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C3494A5D658041A992DE142E /* Sen-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-Regular.ttf"; path = "../src/assets/fonts/Sen-Regular.ttf"; sourceTree = "<group>"; };
+		C8688247C9B74299AB4F7501 /* Sen-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-SemiBold.ttf"; path = "../src/assets/fonts/Sen-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -60,6 +70,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		63BDD3F595924523A645BCB1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1672F47DBEDD4161B8AD53A4 /* Sen-Bold.ttf */,
+				546AE16E1F0A440E98D4E37C /* Sen-ExtraBold.ttf */,
+				20CE5FE2CF2B436AA62B7BD6 /* Sen-Medium.ttf */,
+				C3494A5D658041A992DE142E /* Sen-Regular.ttf */,
+				C8688247C9B74299AB4F7501 /* Sen-SemiBold.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +98,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				63BDD3F595924523A645BCB1 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -161,6 +185,11 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5659A9A6ED5AB48038363EF9 /* PrivacyInfo.xcprivacy in Resources */,
+				A4BA01C000034D83840D7960 /* Sen-Bold.ttf in Resources */,
+				9330AA2D064E4EBB842A46E8 /* Sen-ExtraBold.ttf in Resources */,
+				572463F96A9E409AA6DB674F /* Sen-Medium.ttf in Resources */,
+				318A706AC5B846BF9E82D357 /* Sen-Regular.ttf in Resources */,
+				47D7A64CBB824315B997C591 /* Sen-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
