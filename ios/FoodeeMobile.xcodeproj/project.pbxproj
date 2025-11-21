@@ -12,14 +12,17 @@
 		318A706AC5B846BF9E82D357 /* Sen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3494A5D658041A992DE142E /* Sen-Regular.ttf */; };
 		47D7A64CBB824315B997C591 /* Sen-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8688247C9B74299AB4F7501 /* Sen-SemiBold.ttf */; };
 		5659A9A6ED5AB48038363EF9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		56C60B637FB741ED924B117E /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF864C1CE82142A88F9CF9CE /* BootSplash.storyboard */; };
 		572463F96A9E409AA6DB674F /* Sen-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5FE2CF2B436AA62B7BD6 /* Sen-Medium.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9330AA2D064E4EBB842A46E8 /* Sen-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 546AE16E1F0A440E98D4E37C /* Sen-ExtraBold.ttf */; };
+		96BAB68632114C94BB7EC553 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AFC07389A8C45EDA9AC2635 /* Colors.xcassets */; };
 		A4BA01C000034D83840D7960 /* Sen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1672F47DBEDD4161B8AD53A4 /* Sen-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AFC07389A8C45EDA9AC2635 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = FoodeeMobile/Colors.xcassets; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FoodeeMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodeeMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FoodeeMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FoodeeMobile/Info.plist; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FoodeeMobile/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FoodeeMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEEC2BDA023D176F7B574C61 /* Pods-FoodeeMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodeeMobile.debug.xcconfig"; path = "Target Support Files/Pods-FoodeeMobile/Pods-FoodeeMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		BF864C1CE82142A88F9CF9CE /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = FoodeeMobile/BootSplash.storyboard; sourceTree = "<group>"; };
 		C3494A5D658041A992DE142E /* Sen-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-Regular.ttf"; path = "../src/assets/fonts/Sen-Regular.ttf"; sourceTree = "<group>"; };
 		C8688247C9B74299AB4F7501 /* Sen-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sen-SemiBold.ttf"; path = "../src/assets/fonts/Sen-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -57,6 +61,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				BF864C1CE82142A88F9CF9CE /* BootSplash.storyboard */,
+				0AFC07389A8C45EDA9AC2635 /* Colors.xcassets */,
 			);
 			name = FoodeeMobile;
 			sourceTree = "<group>";
@@ -190,6 +196,8 @@
 				572463F96A9E409AA6DB674F /* Sen-Medium.ttf in Resources */,
 				318A706AC5B846BF9E82D357 /* Sen-Regular.ttf in Resources */,
 				47D7A64CBB824315B997C591 /* Sen-SemiBold.ttf in Resources */,
+				56C60B637FB741ED924B117E /* BootSplash.storyboard in Resources */,
+				96BAB68632114C94BB7EC553 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
