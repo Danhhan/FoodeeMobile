@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DemoScreen from '@/screens/DemoScreen';
-import { ThemeProvider } from '@/theme/context';
+import { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const Stack = createNativeStackNavigator();
+import { ThemeProvider } from '@/theme/context';
+
+import { AppNavigator } from './navigators/AppNavigator';
+import { $styles } from './theme/styles';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks
@@ -25,14 +22,11 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ThemeProvider>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={DemoScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ThemeProvider>
+      <GestureHandlerRootView style={$styles.flex1}>
+        <ThemeProvider>
+          <AppNavigator />
+        </ThemeProvider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }

@@ -1,14 +1,20 @@
 import { ViewStyle } from 'react-native';
 
+import { layout } from './layout';
 import { spacing } from './spacing';
 
 /* Use this file to define styles that are used in multiple places in your app. */
 export const $styles = {
-  flex: { display: 'flex' } as ViewStyle,
-  flex1: { flex: 1 } as ViewStyle,
-  flexWrap: { flexWrap: 'wrap' } as ViewStyle,
-  row: { flexDirection: 'row' } as ViewStyle,
-  center: { alignItems: 'center', justifyContent: 'center' } as ViewStyle,
+  ...layout,
+
+  /* Default Layouts */
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  } as ViewStyle,
+  alignItemsCenter: {
+    alignItems: 'center',
+  } as ViewStyle,
 
   container: {
     paddingTop: spacing.lg + spacing.xl,

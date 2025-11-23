@@ -41,6 +41,7 @@ const palette = {
 
   gray100: '#F3F5F9',
   gray200: '#E5E7EB',
+  gray300: '#646982',
 } as const;
 
 export const colors = {

@@ -3,39 +3,13 @@
 
 import { Platform } from 'react-native';
 
-export const getFontFamily = (baseFont = 'Sen', weight = 'Regular') => {
-  switch (weight) {
-    case '100':
-      return `${baseFont}-Thin`;
-    case '200':
-      return `${baseFont}-ExtraLight`;
-    case '300':
-      return `${baseFont}-Light`;
-    case 'normal':
-    case '400':
-      return `${baseFont}-Regular`;
-    case '500':
-      return `${baseFont}-Medium`;
-    case '600':
-      return `${baseFont}-SemiBold`;
-    case 'bold':
-    case '700':
-      return `${baseFont}-Bold`;
-    case '800':
-      return `${baseFont}-ExtraBold`;
-    case '900':
-      return `${baseFont}-Black`;
-    default:
-      return `${baseFont}-Regular`;
-  }
-};
-
 export const customFontsToLoad = {
   'Sen-Light': 'Sen-Light',
   'Sen-Regular': 'Sen-Regular',
   'Sen-Medium': 'Sen-Medium',
   'Sen-SemiBold': 'Sen-SemiBold',
   'Sen-Bold': 'Sen-Bold',
+  'Sen-ExtraBold': 'Sen-ExtraBold',
 };
 
 const fonts = {
@@ -46,6 +20,7 @@ const fonts = {
     medium: 'Sen-Medium',
     semiBold: 'Sen-SemiBold',
     bold: 'Sen-Bold',
+    extraBold: 'Sen-ExtraBold',
   },
   helveticaNeue: {
     // iOS only font.

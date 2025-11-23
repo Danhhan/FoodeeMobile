@@ -9,13 +9,13 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       },
     ],
-    // [
-    //   'inline-dotenv',
-    //   {
-    //     path: '.env',
-    //     systemVars: true,
-    //   },
-    // ],
-    // 'react-native-reanimated/plugin',
+    [
+      'inline-dotenv',
+      {
+        path: '.env',
+        systemVars: true,
+      },
+    ],
+    'react-native-reanimated/plugin',
   ],
 };
