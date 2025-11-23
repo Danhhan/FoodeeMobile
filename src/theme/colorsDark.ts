@@ -23,6 +23,10 @@ const palette = {
   secondary200: '#626894',
   secondary100: '#41476E',
 
+  info100: '#D6E4FF',
+  info500: '#3B82F6', // info chính
+  info900: '#1E3A8A',
+
   green900: '#145855',
 
   accent500: '#FFEED4',

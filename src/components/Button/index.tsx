@@ -1,5 +1,6 @@
 import { ComponentType } from 'react';
 import {
+  ActivityIndicator,
   Pressable,
   PressableProps,
   PressableStateCallbackType,
@@ -87,6 +88,10 @@ export interface ButtonProps extends PressableProps {
    * An optional text decoration line for the button text
    */
   textDecorationLine?: TextStyle['textDecorationLine'];
+  /**
+   * An optional boolean to show loading state
+   */
+  isLoading?: boolean;
 }
 
 /**
@@ -119,10 +124,14 @@ export function Button(props: ButtonProps) {
     disabled,
     disabledStyle: $disabledViewStyleOverride,
     textDecorationLine,
+    isLoading,
     ...rest
   } = props;
 
-  const { themed } = useAppTheme();
+  const {
+    themed,
+    theme: { colors },
+  } = useAppTheme();
 
   const preset: Presets = props.preset ?? 'default';
   /**
@@ -165,7 +174,7 @@ export function Button(props: ButtonProps) {
       accessibilityRole="button"
       accessibilityState={{ disabled: !!disabled }}
       {...rest}
-      disabled={disabled}
+      disabled={disabled || isLoading}
     >
       {state => (
         <>
@@ -176,15 +185,17 @@ export function Button(props: ButtonProps) {
               disabled={disabled}
             />
           )}
-
-          <Text
-            // tx={tx}
-            text={text}
-            txOptions={txOptions}
-            style={$textStyle(state)}
-          >
-            {children}
-          </Text>
+          {isLoading && <ActivityIndicator color={colors.palette.neutral900} />}
+          {!isLoading && (
+            <Text
+              // tx={tx}
+              text={text}
+              txOptions={txOptions}
+              style={$textStyle(state)}
+            >
+              {children}
+            </Text>
+          )}
 
           {!!RightAccessory && (
             <RightAccessory
@@ -275,7 +286,7 @@ const $textPresets: Record<Presets, ThemedStyleArray<TextStyle>> = {
 
 const $pressedViewPresets: Record<Presets, ThemedStyle<ViewStyle>> = {
   default: ({ colors }) => ({ backgroundColor: colors.palette.neutral200 }),
-  filled: ({ colors }) => ({ backgroundColor: colors.palette.primary400 }),
+  filled: ({ colors }) => ({ backgroundColor: colors.palette.neutral900 }),
   reversed: ({ colors }) => ({ backgroundColor: colors.palette.neutral700 }),
   empty: ({ colors }) => ({
     backgroundColor: colors.palette.neutral200,

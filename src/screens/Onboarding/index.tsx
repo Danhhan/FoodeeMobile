@@ -34,7 +34,7 @@ function OnboardingScreen({ navigation }: OnboardingScreenProps) {
   const isLastStep = selectedIdx === ONBOARDING_STEPS.length - 1;
 
   const onNavigateToSignIn = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate('Auth');
   };
 
   return (

@@ -17,16 +17,17 @@ import { ThemedStyle } from '@/theme/types';
 
 import PasswordTextField from '../components/PasswordTextField';
 
-interface EmailSignInScreenProps extends AppStackScreenProps<'EmailSignIn'> {}
+interface EmailSignUpScreenProps extends AppStackScreenProps<'EmailSignUp'> {}
 
-const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
+const EmailSignUpScreen = ({ navigation }: EmailSignUpScreenProps) => {
   const {
     theme: { colors },
     themed,
   } = useAppTheme();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const authPasswordInput = useRef<TextInput>(null);
   const [authPassword, setAuthPassword] = useState('');
+  const [authName, setAuthName] = useState('');
   const [authEmail, setAuthEmail] = useState('');
   const CloseRightAccessory: ComponentType<TextFieldAccessoryProps> = useMemo(
     () =>
@@ -47,14 +48,6 @@ const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
       },
     [colors.palette.neutral100, themed],
   );
-
-  const onLogin = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigation.navigate('Home');
-    }, 1000);
-  };
   return (
     <Screen safeAreaEdges={['top', 'bottom']} backgroundColor="transparent">
       <View style={$styles.container}>
@@ -65,9 +58,24 @@ const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
           color={colors.palette.neutral900}
           weight="bold"
         >
-          Sign in
+          Sign Up
         </Text>
         <View style={themed($form)}>
+          <TextField
+            value={authName}
+            label="Name"
+            placeholder="Your name"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+            returnKeyType="next"
+            onChangeText={setAuthName}
+            onSubmitEditing={() => {
+              authPasswordInput.current?.focus();
+            }}
+            helper={isError ? 'Required' : undefined}
+            RightAccessory={authName ? CloseRightAccessory : undefined}
+          />
           <TextField
             value={authEmail}
             label="Email"
@@ -80,6 +88,7 @@ const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
             onSubmitEditing={() => {
               authPasswordInput.current?.focus();
             }}
+            helper={isError ? 'Required' : undefined}
             RightAccessory={authEmail ? CloseRightAccessory : undefined}
           />
           <PasswordTextField
@@ -89,18 +98,9 @@ const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
           />
           <Button
             style={themed($submitButton)}
+            text="Sign up"
             preset="filled"
-            onPress={onLogin}
-            text="Sign in"
-            isLoading={isLoading}
-          />
-          <Button
-            preset="empty"
-            text="Forgot your password?"
-            textDecorationLine="underline"
-            textStyle={themed($forgotPasswordText)}
-            style={themed($forgotPasswordButton)}
-            onPress={() => navigation.navigate('ForgotPassword')}
+            onPress={() => setIsError(true)}
           />
         </View>
       </View>
@@ -108,17 +108,13 @@ const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
   );
 };
 
-const $form: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  gap: spacing.md,
-});
-
-const $forgotPasswordText: ThemedStyle<TextStyle> = () => ({
-  fontWeight: 'bold',
-});
-
 const $heading: ThemedStyle<TextStyle> = ({ spacing }) => ({
   marginTop: spacing.lg,
   marginBottom: spacing.sm,
+});
+
+const $form: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  gap: spacing.sm,
 });
 
 const $submitButton: ThemedStyle<ViewStyle> = ({ spacing }) => ({
@@ -136,8 +132,4 @@ const $rightAccessory: ThemedStyle<ViewStyle> = ({ colors }) => ({
   right: 10,
 });
 
-const $forgotPasswordButton: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.md,
-});
-
-export default EmailSignInScreen;
+export default EmailSignUpScreen;

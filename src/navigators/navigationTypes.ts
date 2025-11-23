@@ -5,8 +5,12 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // App Stack Navigator types
 export type AppStackParamList = {
   Onboarding: undefined;
-  SignIn: undefined;
+  Auth: undefined;
   EmailSignIn: undefined;
+  EmailSignUp: undefined;
+  ForgotPassword: undefined;
+  EmailSent: undefined;
+  Home: undefined;
 };
 
 export type TabsParamList = {

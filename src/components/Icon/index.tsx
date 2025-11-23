@@ -40,7 +40,8 @@ type BaseIconProps = {
   containerStyle?: StyleProp<ViewStyle>;
 };
 
-type PressableIconProps = Omit<TouchableOpacityProps, 'style'> & BaseIconProps;
+export type PressableIconProps = Omit<TouchableOpacityProps, 'style'> &
+  BaseIconProps;
 type IconProps = Omit<ViewProps, 'style'> & BaseIconProps;
 
 /**
@@ -112,6 +113,9 @@ export function Icon(props: IconProps) {
 export const iconRegistry = {
   back: require('@/assets/icons/arrow-left.png'),
   facebook: require('@/assets/icons/facebook.png'),
+  hidden: require('@/assets/icons/hidden.png'),
+  view: require('@/assets/icons/view.png'),
+  x: require('@/assets/icons/x.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

@@ -17,8 +17,7 @@ export const $styles = {
   } as ViewStyle,
 
   container: {
-    paddingTop: spacing.lg + spacing.xl,
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: spacing.md,
   } as ViewStyle,
 
   toggleInner: {

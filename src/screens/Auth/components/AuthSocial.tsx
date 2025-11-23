@@ -6,7 +6,7 @@ import { useAppTheme } from '@/theme/context';
 import { ThemedStyle } from '@/theme/types';
 
 interface AuthSocialProps {
-  mode: 'signIn' | 'signUp';
+  mode: string;
   onPressButtonEmail: () => void;
 }
 const AuthSocial = ({ mode, onPressButtonEmail }: AuthSocialProps) => {

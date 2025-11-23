@@ -47,6 +47,9 @@ export const layout = {
     alignItems: 'center',
     justifyContent: 'center',
   } as ViewStyle,
+  rowWrap: {
+    flexWrap: 'wrap',
+  } as ViewStyle,
   alignItemsCenter: {
     alignItems: 'center',
   } as ViewStyle,

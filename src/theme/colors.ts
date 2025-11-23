@@ -29,6 +29,10 @@ const palette = {
   accent400: '#FBC878',
   accent500: '#FFBB50',
 
+  info100: '#D6E4FF',
+  info500: '#3B82F6', // info chính
+  info900: '#1E3A8A',
+
   green900: '#145855',
 
   angry100: '#F2D6CD',
@@ -59,7 +63,7 @@ export const colors = {
   /**
    * The default text color in many components.
    */
-  text: palette.gray300,
+  text: palette.neutral900,
   /**
    * Secondary text information.
    */

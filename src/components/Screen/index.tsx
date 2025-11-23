@@ -79,7 +79,7 @@ const Screen = (props: IScreenProps) => {
       <KeyboardAvoidingView
         {...KeyboardAvoidingViewProps}
         behavior={isIos ? 'padding' : 'height'}
-        style={[$styles.flex1, KeyboardAvoidingViewProps?.style]}
+        style={[$styles.fill, KeyboardAvoidingViewProps?.style]}
       >
         {children}
       </KeyboardAvoidingView>
