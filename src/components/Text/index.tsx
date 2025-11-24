@@ -22,6 +22,8 @@ type Presets =
   | 'formLabel'
   | 'formHelper';
 
+type TextTransform = 'uppercase' | 'lowercase' | 'capitalize';
+
 export interface TextProps extends RNTextProps {
   /**
    * Text which is looked up via i18n.
@@ -66,6 +68,10 @@ export interface TextProps extends RNTextProps {
    * An optional text decoration line for the text
    */
   textDecorationLine?: TextStyle['textDecorationLine'];
+  /**
+   * An optional text transform for the text
+   */
+  textTransform?: TextTransform;
 }
 
 /**
@@ -88,6 +94,7 @@ export const Text = forwardRef(function Text(
     children,
     color,
     textDecorationLine,
+    textTransform,
     style: $styleOverride,
     ...rest
   } = props;
@@ -103,6 +110,7 @@ export const Text = forwardRef(function Text(
     size && $sizeStyles[size],
     color && { color },
     textDecorationLine && { textDecorationLine },
+    textTransform && $textTransformStyles[textTransform],
     $styleOverride,
   ];
 
@@ -150,4 +158,10 @@ const $presets: Record<Presets, ThemedStyleArray<TextStyle>> = {
   formLabel: [$baseStyle, { ...$fontWeightStyles.medium }],
   formHelper: [$baseStyle, { ...$sizeStyles.sm, ...$fontWeightStyles.normal }],
 };
-// const $rtlStyle: TextStyle = isRTL ? { writingDirection: 'rtl' } : {};
+
+// style text transform
+const $textTransformStyles: Record<TextTransform, TextStyle> = {
+  uppercase: { textTransform: 'uppercase' },
+  lowercase: { textTransform: 'lowercase' },
+  capitalize: { textTransform: 'capitalize' },
+};

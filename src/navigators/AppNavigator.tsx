@@ -10,9 +10,11 @@ import EmailSignInScreen from '@/screens/Auth/SignIn/EmailSignIn';
 import EmailSignUpScreen from '@/screens/Auth/SignUp/EmailSignUp';
 import HomeScreen from '@/screens/Home';
 import OnboardingScreen from '@/screens/Onboarding';
+import RestaurantDetailScreen from '@/screens/Restaurant';
 import { useAppTheme } from '@/theme/context';
 
 import { AppStackParamList, NavigationProps } from './navigationTypes';
+import { TabsNavigator } from './TabsNavigator';
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -40,6 +42,8 @@ const AppStack = () => {
       <Stack.Screen name="EmailSent" component={EmailSentScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Tabs" component={TabsNavigator} />
+      <Stack.Screen name="Restaurant" component={RestaurantDetailScreen} />
     </Stack.Navigator>
   );
 };

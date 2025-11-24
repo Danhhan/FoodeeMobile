@@ -116,6 +116,13 @@ export const iconRegistry = {
   hidden: require('@/assets/icons/hidden.png'),
   view: require('@/assets/icons/view.png'),
   x: require('@/assets/icons/x.png'),
+  home: require('@/assets/icons/home.png'),
+  user: require('@/assets/icons/user.png'),
+  cart: require('@/assets/icons/cart.png'),
+  forward: require('@/assets/icons/arrow-right.png'),
+  clock: require('@/assets/icons/clock.png'),
+  star: require('@/assets/icons/star.png'),
+  car: require('@/assets/icons/car.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

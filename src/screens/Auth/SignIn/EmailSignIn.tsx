@@ -52,7 +52,7 @@ const EmailSignInScreen = ({ navigation }: EmailSignInScreenProps) => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigation.navigate('Home');
+      navigation.navigate('Tabs');
     }, 1000);
   };
   return (

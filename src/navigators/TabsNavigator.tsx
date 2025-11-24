@@ -2,8 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RouteProp } from '@react-navigation/native';
 
 import { Icon, IconTypes } from '@/components/Icon';
-import { HomeScreen } from '@/screens/Home';
-import SettingsScreen from '@/screens/Settings';
+import HomeScreen from '@/screens/Home';
 import { useAppTheme } from '@/theme/context';
 
 import { TabsParamList } from './navigationTypes';
@@ -23,13 +22,16 @@ const renderTabIcon = ({
 
   switch (route.name) {
     case 'Home':
-      iconName = 'heart';
+      iconName = 'home';
       break;
     case 'Account':
       iconName = 'user';
       break;
+    case 'Notification':
+      iconName = 'user';
+      break;
     default:
-      iconName = 'heart';
+      iconName = 'home';
   }
 
   return <Icon icon={iconName} size={size} color={color} />;
@@ -44,12 +46,11 @@ const TabsNavigator = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarActiveTintColor: colors.palette.primary500,
-        tabBarInactiveTintColor: colors.palette.neutral500,
+        tabBarInactiveTintColor: colors.palette.neutral700,
         tabBarIcon: ({ color, size }) => renderTabIcon({ route, color, size }),
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Account" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };

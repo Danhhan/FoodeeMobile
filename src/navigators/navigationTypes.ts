@@ -11,11 +11,16 @@ export type AppStackParamList = {
   ForgotPassword: undefined;
   EmailSent: undefined;
   Home: undefined;
+  Account: undefined;
+  Notification: undefined;
+  Tabs: undefined;
+  Restaurant: { restaurantId: string };
 };
 
 export type TabsParamList = {
   Home: undefined;
   Account: undefined;
+  Notification: undefined;
 };
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> =
