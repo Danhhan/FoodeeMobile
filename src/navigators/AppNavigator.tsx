@@ -33,7 +33,7 @@ const AppStack = () => {
           backgroundColor: colors.background,
         },
       }}
-      initialRouteName="Onboarding"
+      initialRouteName="Restaurant"
     >
       <Stack.Screen name="EmailSignIn" component={EmailSignInScreen} />
       <Stack.Screen name="EmailSignUp" component={EmailSignUpScreen} />
