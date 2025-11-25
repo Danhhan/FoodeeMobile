@@ -15,9 +15,9 @@ const Header = ({ onPress }: IHeaderProps) => {
   return (
     <View style={themed($container)}>
       <PressableIcon icon="back" size={24} onPress={onPress} />
-      <Text size="md" weight="medium">
+      {/* <Text size="md" weight="medium">
         The Coffee House
-      </Text>
+      </Text> */}
     </View>
   );
 };
