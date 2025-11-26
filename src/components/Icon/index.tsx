@@ -123,6 +123,7 @@ export const iconRegistry = {
   clock: require('@/assets/icons/clock.png'),
   star: require('@/assets/icons/star.png'),
   car: require('@/assets/icons/car.png'),
+  plus: require('@/assets/icons/plus.png'),
 };
 
 const $imageStyleBase: ImageStyle = {
