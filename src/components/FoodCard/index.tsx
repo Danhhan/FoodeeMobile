@@ -1,7 +1,8 @@
-import { Image, ImageStyle, View, ViewStyle } from 'react-native';
+import { Image, ImageStyle, Pressable, View, ViewStyle } from 'react-native';
 
 import { PressableIcon } from '@/components/Icon';
 import { Text } from '@/components/Text';
+import { navigate } from '@/navigators/navigationUtilities';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
@@ -19,7 +20,12 @@ const FoodCard = ({ food }: IFoodCardProps) => {
   } = useAppTheme();
 
   return (
-    <View style={themed($container)}>
+    <Pressable
+      onPress={() => {
+        navigate('Food', { foodId: food.id });
+      }}
+      style={themed($container)}
+    >
       <Image
         source={require('@/assets/images/food-1.png')}
         style={themed($image)}
@@ -27,7 +33,9 @@ const FoodCard = ({ food }: IFoodCardProps) => {
       />
 
       <View style={themed($contentCard)}>
-        <Text weight="bold">{name}</Text>
+        <Text numberOfLines={1} weight="bold">
+          {name}
+        </Text>
         <Text numberOfLines={2} size="xs" color={colors.palette.neutral500}>
           {description}
         </Text>
@@ -41,7 +49,7 @@ const FoodCard = ({ food }: IFoodCardProps) => {
           />
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -63,8 +71,8 @@ const $image: ThemedStyle<ImageStyle> = () => ({
 const $contentCard: ThemedStyle<ViewStyle> = ({ colors }) => ({
   backgroundColor: colors.palette.neutral100,
   paddingHorizontal: 12,
-  paddingVertical: 20,
-  paddingTop: 30,
+  paddingVertical: 10,
+  paddingTop: 50,
   position: 'absolute',
   bottom: -20,
   left: 0,

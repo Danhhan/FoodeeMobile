@@ -15,6 +15,7 @@ export type AppStackParamList = {
   Notification: undefined;
   Tabs: undefined;
   Restaurant: { restaurantId: string };
+  Food: { foodId: string };
 };
 
 export type TabsParamList = {

@@ -1,4 +1,5 @@
 import { Animated, View, ViewStyle } from 'react-native';
+import { Extrapolation } from 'react-native-reanimated';
 
 import { PressableIcon } from '@/components/Icon';
 import { useAppTheme } from '@/theme/context';
@@ -13,7 +14,7 @@ interface IStickyHeaderProps {
 
 const ANIMATION_CONFIG = {
   inputRange: [80, 140],
-  extrapolate: 'clamp' as const,
+  extrapolate: Extrapolation.CLAMP,
 };
 
 const StickyHeader = ({

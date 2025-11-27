@@ -31,12 +31,9 @@ const RESTAURANT_DATA = {
   foodCount: 10,
 };
 
-interface IRestaurantDetailScreenProps
-  extends AppStackScreenProps<'Restaurant'> {}
+interface IFoodDetailScreenProps extends AppStackScreenProps<'Food'> {}
 
-const RestaurantDetailScreen = ({
-  navigation,
-}: IRestaurantDetailScreenProps) => {
+const FoodDetailScreen = ({ navigation }: IFoodDetailScreenProps) => {
   const {
     theme: { colors },
     themed,
@@ -156,4 +153,4 @@ const $imageOverlay: ThemedStyle<ViewStyle> = ({ colors }) => ({
   opacity: 0.3,
 });
 
-export default RestaurantDetailScreen;
+export default FoodDetailScreen;
