@@ -124,6 +124,7 @@ export const iconRegistry = {
   star: require('@/assets/icons/star.png'),
   car: require('@/assets/icons/car.png'),
   plus: require('@/assets/icons/plus.png'),
+  close: require('@/assets/icons/x.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

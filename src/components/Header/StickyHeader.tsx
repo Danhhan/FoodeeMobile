@@ -1,7 +1,7 @@
 import { Animated, View, ViewStyle } from 'react-native';
 import { Extrapolation } from 'react-native-reanimated';
 
-import { PressableIcon } from '@/components/Icon';
+import { IconTypes, PressableIcon } from '@/components/Icon';
 import { useAppTheme } from '@/theme/context';
 import { ThemedStyle } from '@/theme/types';
 import { useSafeAreaInsetsStyle } from '@/utils/useSafeAreaInsetsStyle';
@@ -10,6 +10,7 @@ interface IStickyHeaderProps {
   scrollY: Animated.Value;
   onPressGoBack: () => void;
   title: string;
+  icon: IconTypes;
 }
 
 const ANIMATION_CONFIG = {
@@ -21,6 +22,7 @@ const StickyHeader = ({
   scrollY,
   onPressGoBack,
   title,
+  icon,
 }: IStickyHeaderProps) => {
   const {
     theme: { colors },
@@ -68,9 +70,10 @@ const StickyHeader = ({
           <Animated.View style={{ opacity: whiteIconOpacity }}>
             <PressableIcon
               color={colors.palette.neutral100}
-              icon="back"
+              icon={icon}
               size={24}
               onPress={onPressGoBack}
+              activeOpacity={1}
             />
           </Animated.View>
 
@@ -79,9 +82,10 @@ const StickyHeader = ({
           >
             <PressableIcon
               color={colors.palette.neutral900}
-              icon="back"
+              icon={icon}
               size={24}
               onPress={onPressGoBack}
+              activeOpacity={1}
             />
           </Animated.View>
         </View>

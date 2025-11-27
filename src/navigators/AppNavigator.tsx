@@ -51,7 +51,7 @@ const AppStack = () => {
         component={FoodDetailScreen}
         options={{
           presentation: 'fullScreenModal',
-          animation: 'slide_from_bottom',
+          animation: 'fade_from_bottom',
         }}
       />
     </Stack.Navigator>

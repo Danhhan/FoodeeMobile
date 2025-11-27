@@ -47,6 +47,7 @@ const RestaurantDetailScreen = ({
   return (
     <Screen>
       <StickyHeader
+        icon="back"
         onPressGoBack={() => navigation.goBack()}
         scrollY={scrollY}
         title={RESTAURANT_DATA.name}

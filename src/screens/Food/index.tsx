@@ -1,25 +1,17 @@
-import { useRef, useState } from 'react';
-import { Animated, ImageBackground, View, ViewStyle } from 'react-native';
+import { useRef } from 'react';
+import { Animated, Image, ImageStyle, View, ViewStyle } from 'react-native';
 
-import FoodCard from '@/components/FoodCard';
-import { GrowableBanner } from '@/components/GrowableBanner';
 import StickyHeader from '@/components/Header/StickyHeader';
 import { RestaurantMeta } from '@/components/RestaurantMeta';
 import Screen from '@/components/Screen';
 import { Text } from '@/components/Text';
-import { categories } from '@/mockData/home';
-import { mockFoodItems } from '@/mockData/restaurant';
 import { AppStackScreenProps } from '@/navigators/navigationTypes';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
+import { useSafeAreaInsetsStyle } from '@/utils/useSafeAreaInsetsStyle';
 
-import CategoryFlatList from './components/CategoryFlatList';
-
-const FoodItemSeparator = () => {
-  const { themed } = useAppTheme();
-  return <View style={themed($foodItemSeparator)} />;
-};
+import { GrowableBanner } from './components/GrowableBanner';
 
 const RESTAURANT_DATA = {
   name: 'Spicy restaurant',
@@ -35,76 +27,80 @@ interface IFoodDetailScreenProps extends AppStackScreenProps<'Food'> {}
 
 const FoodDetailScreen = ({ navigation }: IFoodDetailScreenProps) => {
   const {
-    theme: { colors },
+    theme: { colors, spacing },
     themed,
   } = useAppTheme();
-  const [selectedCatIndex, setSelectedCatIndex] = useState(0);
   const scrollY = useRef(new Animated.Value(0)).current;
-
+  const $containerInsets = useSafeAreaInsetsStyle(['top']);
   return (
     <Screen>
       <StickyHeader
+        icon="close"
         onPressGoBack={() => navigation.goBack()}
         scrollY={scrollY}
         title={RESTAURANT_DATA.name}
       />
-
-      <Animated.FlatList
+      <Animated.ScrollView
         scrollEventThrottle={16}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: true },
         )}
-        ListHeaderComponent={
-          <>
-            <View style={themed($growableBannerContainer)}>
-              <GrowableBanner scrollY={scrollY}>
-                <ImageBackground
-                  style={themed($headerImage)}
-                  source={require('@/assets/images/restaurant-1.jpg')}
-                >
-                  <View style={themed($imageOverlay)} />
-                </ImageBackground>
-              </GrowableBanner>
-            </View>
-
-            <View style={themed($restaurantInfo)}>
-              <RestaurantMeta
-                rating={RESTAURANT_DATA.rating}
-                deliveryFee={RESTAURANT_DATA.deliveryFee}
-                deliveryTime={RESTAURANT_DATA.deliveryTime}
+      >
+        <View style={themed($growableBannerContainer)}>
+          <GrowableBanner scrollY={scrollY}>
+            <View style={themed($headerImage)}>
+              <Image
+                source={require('@/assets/images/food-1.png')}
+                style={themed([
+                  $foodImage,
+                  { top: $containerInsets.paddingTop },
+                ])}
+                resizeMode="cover"
               />
-              <Text weight="bold" size="lg" style={themed($restaurantName)}>
-                {RESTAURANT_DATA.name}
-              </Text>
-              <Text color={colors.palette.neutral500} size="xs">
-                {RESTAURANT_DATA.description}
-              </Text>
-              <CategoryFlatList
-                categories={categories}
-                selectedCatIndex={selectedCatIndex}
-                onCategoryPress={setSelectedCatIndex}
-              />
-
-              <Text
-                style={themed($sectionTitle)}
-                color={colors.palette.neutral800}
-                size="lg"
-              >
-                All ({RESTAURANT_DATA.foodCount})
-              </Text>
             </View>
-          </>
-        }
-        data={mockFoodItems}
-        numColumns={2}
-        renderItem={({ item }) => <FoodCard food={item} />}
-        keyExtractor={item => item.id}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={themed($foodGrid)}
-        columnWrapperStyle={themed($columnWrapper)}
-        ItemSeparatorComponent={FoodItemSeparator}
-      />
+          </GrowableBanner>
+        </View>
+
+        <View style={themed($foodInfo)}>
+          <Text weight="bold" size="lg">
+            {RESTAURANT_DATA.name}
+          </Text>
+          <View style={[$styles.row, { marginBottom: 22, marginTop: 10 }]}>
+            <Image
+              source={require('@/assets/images/restaurant-logo.png')}
+              style={{ height: 22, width: 22, marginRight: spacing.xs }}
+            />
+            <Text size="xs">Spicy restaurant</Text>
+          </View>
+          <RestaurantMeta
+            rating={RESTAURANT_DATA.rating}
+            deliveryFee={RESTAURANT_DATA.deliveryFee}
+            deliveryTime={RESTAURANT_DATA.deliveryTime}
+          />
+          <Text
+            style={{ marginVertical: 20 }}
+            color={colors.palette.neutral500}
+            size="xs"
+          >
+            {RESTAURANT_DATA.description}
+          </Text>
+          <View>
+            <Text>Size:</Text>
+            <View
+              style={{
+                height: 48,
+                width: 48,
+                backgroundColor: colors.palette.neutral200,
+                borderRadius: 50,
+                ...$styles.center,
+              }}
+            >
+              <Text>10 &quot;</Text>
+            </View>
+          </View>
+        </View>
+      </Animated.ScrollView>
     </Screen>
   );
 };
@@ -113,44 +109,25 @@ const $growableBannerContainer: ThemedStyle<ViewStyle> = () => ({
   height: 320,
 });
 
-const $restaurantInfo: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+const $foodInfo: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   ...$styles.container,
-  marginTop: spacing.lg + spacing.xxxs,
+  marginTop: spacing.lg,
 });
 
-const $restaurantName: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.md,
-});
-
-const $foodItemSeparator: ThemedStyle<ViewStyle> = () => ({
-  height: 30,
-});
-
-const $headerImage: ThemedStyle<ViewStyle> = () => ({
-  overflow: 'hidden',
-  borderRadius: 25,
+const $headerImage: ThemedStyle<ViewStyle> = ({ colors }) => ({
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
   height: '100%',
+  backgroundColor: colors.palette.primary300,
+  borderRadius: 20,
+  overflow: 'hidden',
 });
 
-const $sectionTitle: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.xl,
-  marginBottom: spacing.lg,
-});
-
-const $foodGrid: ThemedStyle<ViewStyle> = () => ({
-  paddingBottom: 40,
-});
-
-const $columnWrapper: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  gap: spacing.lg,
-  marginVertical: 18,
-  paddingHorizontal: spacing.md,
-});
-
-const $imageOverlay: ThemedStyle<ViewStyle> = ({ colors }) => ({
-  ...$styles.fullSize,
-  backgroundColor: colors.palette.neutral900,
-  opacity: 0.3,
+const $foodImage: ThemedStyle<ImageStyle> = () => ({
+  width: '80%',
+  height: '100%',
+  position: 'absolute',
 });
 
 export default FoodDetailScreen;
