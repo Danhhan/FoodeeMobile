@@ -23,7 +23,6 @@ const HomeScreen = ({ navigation }: IHomeScreenProps) => {
     themed,
   } = useAppTheme();
   const [selectedCatIndex, setSelectedCatIndex] = useState(0);
-
   return (
     <Screen safeAreaEdges={['top']}>
       <Header />

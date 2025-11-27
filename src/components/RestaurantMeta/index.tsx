@@ -45,7 +45,7 @@ export const RestaurantMeta = (props: RestaurantMetaProps) => {
 const $restaurantMeta: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   ...$styles.row,
   gap: spacing.lg + spacing.xs,
-  marginTop: spacing.md,
+  // marginTop: spacing.md,
 });
 
 const $metaText: ThemedStyle<ViewStyle> = ({ spacing }) => ({

@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { FlatList, Image, ImageStyle, View, ViewStyle } from 'react-native';
+import { useRef, useState } from 'react';
+import { Animated, ImageBackground, View, ViewStyle } from 'react-native';
 
 import FoodCard from '@/components/FoodCard';
+import StickyHeader from '@/components/Header/StickyHeader';
 import { RestaurantMeta } from '@/components/RestaurantMeta';
 import Screen from '@/components/Screen';
 import { Text } from '@/components/Text';
@@ -13,7 +14,21 @@ import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 
 import CategoryFlatList from './components/CategoryFlatList';
-import Header from './components/Header';
+
+const FoodItemSeparator = () => {
+  const { themed } = useAppTheme();
+  return <View style={themed($foodItemSeparator)} />;
+};
+
+const RESTAURANT_DATA = {
+  name: 'Spicy restaurant',
+  description:
+    'Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
+  rating: 4.5,
+  deliveryFee: 'Free',
+  deliveryTime: '20 min',
+  foodCount: 10,
+};
 
 interface IRestaurantDetailScreenProps
   extends AppStackScreenProps<'Restaurant'> {}
@@ -26,40 +41,57 @@ const RestaurantDetailScreen = ({
     themed,
   } = useAppTheme();
   const [selectedCatIndex, setSelectedCatIndex] = useState(0);
+  const scrollY = useRef(new Animated.Value(0)).current;
 
   return (
-    <Screen safeAreaEdges={['top']}>
-      <Header onPress={() => navigation.goBack()} />
-      <FlatList
+    <Screen>
+      <StickyHeader
+        onPressGoBack={() => navigation.goBack()}
+        scrollY={scrollY}
+        title={RESTAURANT_DATA.name}
+      />
+
+      <Animated.FlatList
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: true },
+        )}
         ListHeaderComponent={
           <>
-            <Image
-              style={themed($restaurantImage)}
+            <ImageBackground
+              style={themed($headerImage)}
               source={require('@/assets/images/restaurant-1.jpg')}
-            />
-            <Text weight="bold" size="lg">
-              {RESTAURANT_DATA.name}
-            </Text>
-            <Text color={colors.palette.neutral500} size="xs">
-              {RESTAURANT_DATA.description}
-            </Text>
-            <RestaurantMeta
-              rating={RESTAURANT_DATA.rating}
-              deliveryFee={RESTAURANT_DATA.deliveryFee}
-              deliveryTime={RESTAURANT_DATA.deliveryTime}
-            />
-            <CategoryFlatList
-              categories={categories}
-              selectedCatIndex={selectedCatIndex}
-              onCategoryPress={setSelectedCatIndex}
-            />
-            <Text
-              style={themed($sectionTitle)}
-              color={colors.palette.neutral800}
-              size="lg"
             >
-              All ({RESTAURANT_DATA.foodCount})
-            </Text>
+              <View style={themed($imageOverlay)} />
+            </ImageBackground>
+            <View style={[$styles.container, { marginTop: 26 }]}>
+              <RestaurantMeta
+                rating={RESTAURANT_DATA.rating}
+                deliveryFee={RESTAURANT_DATA.deliveryFee}
+                deliveryTime={RESTAURANT_DATA.deliveryTime}
+              />
+              {/* Restaurant Info */}
+              <Text weight="bold" size="lg" style={themed($restaurantName)}>
+                {RESTAURANT_DATA.name}
+              </Text>
+              <Text color={colors.palette.neutral500} size="xs">
+                {RESTAURANT_DATA.description}
+              </Text>
+              <CategoryFlatList
+                categories={categories}
+                selectedCatIndex={selectedCatIndex}
+                onCategoryPress={setSelectedCatIndex}
+              />
+
+              <Text
+                style={themed($sectionTitle)}
+                color={colors.palette.neutral800}
+                size="lg"
+              >
+                All ({RESTAURANT_DATA.foodCount})
+              </Text>
+            </View>
           </>
         }
         data={mockFoodItems}
@@ -69,44 +101,45 @@ const RestaurantDetailScreen = ({
         showsVerticalScrollIndicator={false}
         contentContainerStyle={themed($foodGrid)}
         columnWrapperStyle={themed($columnWrapper)}
-        ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
+        ItemSeparatorComponent={FoodItemSeparator}
       />
     </Screen>
   );
 };
 
-// Constants
-const RESTAURANT_DATA = {
-  name: 'Spicy restaurant',
-  description:
-    'Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
-  rating: 4.5,
-  deliveryFee: 'Free',
-  deliveryTime: '20 min',
-  foodCount: 10,
-};
-
-// Styles
-const $restaurantImage: ThemedStyle<ImageStyle> = () => ({
-  width: '100%',
-  height: 150,
-  borderRadius: 20,
-  marginVertical: 20,
+const $restaurantName: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  marginTop: spacing.md,
 });
 
-const $sectionTitle: ThemedStyle<ViewStyle> = () => ({
-  marginTop: 32,
-  marginBottom: 20,
+const $foodItemSeparator: ThemedStyle<ViewStyle> = () => ({
+  height: 30,
+});
+
+const $headerImage: ThemedStyle<ViewStyle> = () => ({
+  height: 320,
+  overflow: 'hidden',
+  borderRadius: 25,
+});
+
+const $sectionTitle: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  marginTop: spacing.xl,
+  marginBottom: spacing.lg,
 });
 
 const $foodGrid: ThemedStyle<ViewStyle> = () => ({
-  ...$styles.container,
-  paddingBottom: 20,
+  paddingBottom: 40,
 });
 
-const $columnWrapper: ThemedStyle<ViewStyle> = () => ({
-  gap: 10,
+const $columnWrapper: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  gap: spacing.lg,
   marginVertical: 18,
+  paddingHorizontal: spacing.md,
+});
+
+const $imageOverlay: ThemedStyle<ViewStyle> = ({ colors }) => ({
+  ...$styles.fullSize,
+  backgroundColor: colors.palette.neutral900,
+  opacity: 0.3,
 });
 
 export default RestaurantDetailScreen;
