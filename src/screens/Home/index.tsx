@@ -4,16 +4,18 @@ import { RestaurantCard } from '@/components/Restaurant/RestaurantCard';
 import Screen from '@/components/Screen';
 import { mockBanners } from '@/mockData/home';
 import { mockRestaurants } from '@/mockData/restaurant';
-import { AppStackScreenProps } from '@/navigators/navigationTypes';
+// import { AppStackScreenProps } from '@/navigators/navigationTypes';
 import { $styles } from '@/theme/styles';
 
 import { Banner } from './components/Banner';
 import { CategoryListBadge } from './components/CategoryListBadge';
 import { CategoryListCard } from './components/CategoryListCard';
+import { GroceryWidget } from './components/GroceryWidget';
 import { Header } from './components/Header';
 import { RestaurantWidget } from './components/RestaurantWidget';
 
-interface IHomeScreenProps extends AppStackScreenProps<'Home'> {}
+interface IHomeScreenProps {}
+// interface IHomeScreenProps extends AppStackScreenProps<'Home'> {}
 
 const HomeScreen = ({}: IHomeScreenProps) => {
   const [selectedCatId, setSelectedCatId] = useState('');
@@ -69,6 +71,9 @@ const HomeScreen = ({}: IHomeScreenProps) => {
       {afterRewards.map((restaurant, index) => (
         <RestaurantCard key={index} restaurant={restaurant} />
       ))}
+      <GroceryWidget title="Fresh grocery" />
+      <GroceryWidget title="Sweet treats" />
+      <RestaurantCard restaurant={mockRestaurants.slice(14, 15)[0]} />
     </Screen>
   );
 };

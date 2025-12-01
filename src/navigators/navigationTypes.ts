@@ -21,7 +21,9 @@ export type AppStackParamList = {
 export type TabsParamList = {
   Home: undefined;
   Account: undefined;
-  Notification: undefined;
+  Browse: undefined;
+  Grocery: undefined;
+  Baskets: undefined;
 };
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> =

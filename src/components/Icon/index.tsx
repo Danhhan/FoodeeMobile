@@ -132,6 +132,11 @@ export const iconRegistry = {
   'heart-fill': require('@/assets/icons/heart-fill.png'),
   'rating-filled': require('@/assets/icons/rating-filled.png'),
   'arrow-right': require('@/assets/icons/arrow-right.png'),
+  'chevron-right': require('@/assets/icons/chevron-right.png'),
+  account: require('@/assets/icons/account.png'),
+  browse: require('@/assets/icons/browse.png'),
+  grocery: require('@/assets/icons/grocery.png'),
+  basket: require('@/assets/icons/basket.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

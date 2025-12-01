@@ -12,11 +12,9 @@ const Tab = createBottomTabNavigator<TabsParamList>();
 const renderTabIcon = ({
   route,
   color,
-  size,
 }: {
   route: RouteProp<TabsParamList, keyof TabsParamList>;
   color: string;
-  size: number;
 }) => {
   let iconName: IconTypes;
 
@@ -25,16 +23,22 @@ const renderTabIcon = ({
       iconName = 'home';
       break;
     case 'Account':
-      iconName = 'user';
+      iconName = 'account';
       break;
-    case 'Notification':
-      iconName = 'user';
+    case 'Browse':
+      iconName = 'browse';
+      break;
+    case 'Grocery':
+      iconName = 'grocery';
+      break;
+    case 'Baskets':
+      iconName = 'basket';
       break;
     default:
       iconName = 'home';
   }
 
-  return <Icon icon={iconName} size={size} color={color} />;
+  return <Icon icon={iconName} size={18} color={color} />;
 };
 const TabsNavigator = () => {
   const {
@@ -46,11 +50,15 @@ const TabsNavigator = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarActiveTintColor: colors.palette.black500,
-        tabBarInactiveTintColor: colors.palette.neutral700,
-        tabBarIcon: ({ color, size }) => renderTabIcon({ route, color, size }),
+        tabBarInactiveTintColor: colors.palette.white700,
+        tabBarIcon: ({ color }) => renderTabIcon({ route, color }),
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Browse" component={HomeScreen} />
+      <Tab.Screen name="Grocery" component={HomeScreen} />
+      <Tab.Screen name="Baskets" component={HomeScreen} />
+      <Tab.Screen name="Account" component={HomeScreen} />
     </Tab.Navigator>
   );
 };
