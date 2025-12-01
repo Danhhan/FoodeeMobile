@@ -25,3 +25,17 @@ export interface IFood {
   isPopular?: boolean;
   preparationTime?: string;
 }
+
+export interface IBanner {
+  id: string;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  backgroundColor: string;
+  imageUrl: string;
+  action: {
+    type: string;
+    route: string;
+  };
+  priority: number;
+}

@@ -1,70 +1,43 @@
 import { useState } from 'react';
-import { FlatList, View, ViewStyle } from 'react-native';
 
-import { Header } from '@/components/Header';
+import { RestaurantCard } from '@/components/Restaurant/RestaurantCard';
 import Screen from '@/components/Screen';
-import { Text } from '@/components/Text';
-import { TextField } from '@/components/TextField';
-import { categories, restaurants } from '@/mockData/home';
 import { AppStackScreenProps } from '@/navigators/navigationTypes';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
-import { ThemedStyle } from '@/theme/types';
 
-import CategorySection from './components/CategorySection';
-import RestaurantCardItem from './components/RestaurantCardItem';
-import SectionHeader from './components/SectionHeader';
+import { CategoryList } from './components/CategoryList';
+import { Header } from './components/Header';
+import { Banner } from './components/Banner';
 
 interface IHomeScreenProps extends AppStackScreenProps<'Home'> {}
 
 const HomeScreen = ({ navigation }: IHomeScreenProps) => {
-  const {
-    theme: { colors },
-    themed,
-  } = useAppTheme();
-  const [selectedCatIndex, setSelectedCatIndex] = useState(0);
+  const { themed } = useAppTheme();
+  const [selectedCatId, setSelectedCatId] = useState('');
+
   return (
-    <Screen safeAreaEdges={['top']}>
-      <Header />
-      <FlatList
-        ListHeaderComponent={
-          <>
-            <View style={$styles.container}>
-              <Text>
-                <Text color={colors.palette.neutral800}>Hey Halal, </Text>
-                <Text weight="bold">Good Morning!</Text>
-              </Text>
-              <TextField
-                containerStyle={themed($searchField)}
-                placeholder="Search dishes, restaurants"
-              />
-            </View>
-            <CategorySection
-              selectedCategoryIndex={selectedCatIndex}
-              onCategorySelect={setSelectedCatIndex}
-              categories={categories}
-            />
-            <SectionHeader title="Open restaurants" />
-          </>
-        }
-        data={restaurants}
-        renderItem={({ item }) => (
-          <RestaurantCardItem
-            onPress={() =>
-              navigation.navigate('Restaurant', { restaurantId: item.id })
-            }
-            item={item}
+    <Screen
+      safeAreaEdges={['top']}
+      preset="scroll"
+      ScrollViewProps={{
+        showsVerticalScrollIndicator: false,
+      }}
+      contentContainerStyle={$styles.container}
+      header={
+        <Header>
+          <CategoryList
+            selectedCatId={selectedCatId}
+            onCategorySelect={setSelectedCatId}
           />
-        )}
-        keyExtractor={item => item.id}
-        showsVerticalScrollIndicator={false}
-      />
+        </Header>
+      }
+    >
+      <RestaurantCard />
+      <RestaurantCard />
+      <Banner banners={[]} />
     </Screen>
   );
 };
-
-const $searchField: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.md,
-});
 
 export default HomeScreen;

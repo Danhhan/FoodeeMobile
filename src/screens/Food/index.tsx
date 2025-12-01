@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Animated, Image, ImageStyle, View, ViewStyle } from 'react-native';
 
 import StickyHeader from '@/components/Header/StickyHeader';
@@ -12,6 +12,9 @@ import { ThemedStyle } from '@/theme/types';
 import { useSafeAreaInsetsStyle } from '@/utils/useSafeAreaInsetsStyle';
 
 import { GrowableBanner } from './components/GrowableBanner';
+import { FoodSizeListCircle } from './components/FoodSizeListCircle';
+import { FOOD_INGREDIENTS, FOOD_SIZES } from '@/mockData/food';
+import IngredientListCircle from './components/IngredientListCircle';
 
 const RESTAURANT_DATA = {
   name: 'Spicy restaurant',
@@ -32,8 +35,9 @@ const FoodDetailScreen = ({ navigation }: IFoodDetailScreenProps) => {
   } = useAppTheme();
   const scrollY = useRef(new Animated.Value(0)).current;
   const $containerInsets = useSafeAreaInsetsStyle(['top']);
+  const [selectedSizeId, setSelectedSizeId] = useState<string>('small');
   return (
-    <Screen>
+    <Screen safeAreaEdges={['bottom']}>
       <StickyHeader
         icon="close"
         onPressGoBack={() => navigation.goBack()}
@@ -46,6 +50,7 @@ const FoodDetailScreen = ({ navigation }: IFoodDetailScreenProps) => {
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: true },
         )}
+        showsVerticalScrollIndicator={false}
       >
         <View style={themed($growableBannerContainer)}>
           <GrowableBanner scrollY={scrollY}>
@@ -64,7 +69,7 @@ const FoodDetailScreen = ({ navigation }: IFoodDetailScreenProps) => {
 
         <View style={themed($foodInfo)}>
           <Text weight="bold" size="lg">
-            {RESTAURANT_DATA.name}
+            Burger Bistro
           </Text>
           <View style={[$styles.row, { marginBottom: 22, marginTop: 10 }]}>
             <Image
@@ -85,20 +90,12 @@ const FoodDetailScreen = ({ navigation }: IFoodDetailScreenProps) => {
           >
             {RESTAURANT_DATA.description}
           </Text>
-          <View>
-            <Text>Size:</Text>
-            <View
-              style={{
-                height: 48,
-                width: 48,
-                backgroundColor: colors.palette.neutral200,
-                borderRadius: 50,
-                ...$styles.center,
-              }}
-            >
-              <Text>10 &quot;</Text>
-            </View>
-          </View>
+          <FoodSizeListCircle
+            sizeList={FOOD_SIZES}
+            selectedSizeId={selectedSizeId}
+            onSizePress={setSelectedSizeId}
+          />
+          <IngredientListCircle ingredientList={FOOD_INGREDIENTS} />
         </View>
       </Animated.ScrollView>
     </Screen>
@@ -112,6 +109,7 @@ const $growableBannerContainer: ThemedStyle<ViewStyle> = () => ({
 const $foodInfo: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   ...$styles.container,
   marginTop: spacing.lg,
+  paddingBottom: 184,
 });
 
 const $headerImage: ThemedStyle<ViewStyle> = ({ colors }) => ({

@@ -125,6 +125,13 @@ export const iconRegistry = {
   car: require('@/assets/icons/car.png'),
   plus: require('@/assets/icons/plus.png'),
   close: require('@/assets/icons/x.png'),
+  salt: require('@/assets/icons/salt.png'),
+  'chevron-down': require('@/assets/icons/chevron-down.png'),
+  adjust: require('@/assets/icons/adjust.png'),
+  'heart-line': require('@/assets/icons/heart-line.png'),
+  'heart-fill': require('@/assets/icons/heart-fill.png'),
+  'rating-filled': require('@/assets/icons/rating-filled.png'),
+  'arrow-right': require('@/assets/icons/arrow-right.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

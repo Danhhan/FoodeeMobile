@@ -9,19 +9,68 @@ const palette = {
   neutral800: '#191015',
   neutral900: '#000000',
 
-  primary50: '#FFF4ED',
-  primary100: '#FFE5D6',
-  primary200: '#FFCBAD',
-  primary300: '#FFAD7F',
-  primary400: '#FF9050',
-  primary500: '#FF7622',
-  primary600: '#E65A0A',
+  primary50: '#edf6ce',
+  primary100: '#c7e3cb',
+  primary200: '#acd5b2',
+  primary300: '#86c28e',
+  primary400: '#6fb679',
+  primary500: '#4ba457',
+  primary600: '#44954f',
 
-  secondary100: '#DCDDE9',
-  secondary200: '#BCC0D6',
-  secondary300: '#9196B9',
-  secondary400: '#626894',
-  secondary500: '#41476E',
+  secondary50: '#ebf6ee',
+  secondary100: '#c0e4ca',
+  secondary200: '#a2d7b0',
+  secondary300: '#77c58c',
+  secondary400: '#5ab357',
+  secondary500: '#34a853',
+  secondary600: '#2f994c',
+  secondary700: '#25773b',
+  secondary800: '#1d5c2e',
+  secondary900: '#164723',
+
+  white50: '#ffffff',
+  white100: '#ffffff',
+  white200: '#ffffff',
+  white300: '#ffffff',
+  white400: '#ffffff',
+  white500: '#ffffff',
+  white600: '#e8e8e8',
+  white700: '#b5b5b5',
+  white800: '#8c8c8c',
+  white900: '#6b6b6b',
+
+  black50: '#e6e6e6',
+  black100: '#b0b0b0',
+  black200: '#8a8a8a',
+  black300: '#545454',
+  black400: '#333333',
+  black500: '#000000',
+  black600: '#000000',
+  black700: '#000000',
+  black800: '#000000',
+  black900: '#000000',
+
+  gray50: '#fdfdfd',
+  gray100: '#fafafa',
+  gray200: '#f7f7f7',
+  gray300: '#f4f4f4',
+  gray400: '#f1f1f1',
+  gray500: '#eeeeee',
+  gray600: '#d9d9d9',
+  gray700: '#a9a9a9',
+  gray800: '#838383',
+  gray900: '#646464',
+
+  blue50: '#e9f1fe',
+  blue100: '#bcd2fb',
+  blue200: '#9cbcf9',
+  blue300: '#6e9ef6',
+  blue400: '#528bf4',
+  blue500: '#276ef1',
+  blue600: '#2364db',
+  blue700: '#1c4eab',
+  blue800: '#153d85',
+  blue900: '#102e65',
 
   accent100: '#FFEED4',
   accent200: '#FFE1B2',
@@ -30,7 +79,7 @@ const palette = {
   accent500: '#FFBB50',
 
   info100: '#D6E4FF',
-  info500: '#3B82F6', // info chính
+  info500: '#3B82F6',
   info900: '#1E3A8A',
 
   green900: '#145855',
@@ -43,10 +92,6 @@ const palette = {
   overlay50: 'rgba(25, 16, 21, 0.5)',
 
   label: '#36455A',
-
-  gray100: '#F3F5F9',
-  gray200: '#E5E7EB',
-  gray300: '#646982',
 } as const;
 
 export const colors = {
@@ -63,7 +108,7 @@ export const colors = {
   /**
    * The default text color in many components.
    */
-  text: palette.neutral900,
+  text: palette.black500,
   /**
    * Secondary text information.
    */

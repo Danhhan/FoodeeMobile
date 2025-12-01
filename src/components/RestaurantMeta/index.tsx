@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { View, ViewStyle } from 'react-native';
 
 import { Text } from '@/components/Text';
@@ -11,7 +12,7 @@ import { Icon } from '../Icon';
 interface RestaurantMetaProps
   extends Pick<IRestaurant, 'rating' | 'deliveryFee' | 'deliveryTime'> {}
 
-export const RestaurantMeta = (props: RestaurantMetaProps) => {
+export const RestaurantMeta = memo((props: RestaurantMetaProps) => {
   const { rating, deliveryFee, deliveryTime } = props;
   const {
     theme: { colors },
@@ -40,7 +41,9 @@ export const RestaurantMeta = (props: RestaurantMetaProps) => {
       </View>
     </View>
   );
-};
+});
+
+RestaurantMeta.displayName = 'RestaurantMeta';
 
 const $restaurantMeta: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   ...$styles.row,
