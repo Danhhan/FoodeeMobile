@@ -9,14 +9,12 @@ import { ThemedStyle } from '@/theme/types';
 interface HeaderProps {
   children: React.ReactNode;
 }
+
 export const Header = ({ children }: HeaderProps) => {
-  const {
-    theme: { spacing },
-    themed,
-  } = useAppTheme();
+  const { themed } = useAppTheme();
   return (
     <View style={themed($container)}>
-      <View style={[$styles.row, $styles.center, { gap: 2 }]}>
+      <View style={themed($address)}>
         <Text size="md" weight="medium">
           Now
         </Text>
@@ -38,6 +36,12 @@ export const Header = ({ children }: HeaderProps) => {
     </View>
   );
 };
+
+const $address: ThemedStyle<ViewStyle> = () => ({
+  ...$styles.row,
+  ...$styles.center,
+  gap: 2,
+});
 
 const $container: ThemedStyle<ViewStyle> = () => ({
   position: 'relative',

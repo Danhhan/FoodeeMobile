@@ -29,13 +29,12 @@ export interface IFood {
 export interface IBanner {
   id: string;
   title: string;
-  subtitle: string;
   buttonText: string;
   backgroundColor: string;
-  imageUrl: string;
-  action: {
+  imageUrl: any;
+  action?: {
     type: string;
     route: string;
   };
-  priority: number;
+  priority?: number;
 }

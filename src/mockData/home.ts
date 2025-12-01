@@ -1,4 +1,4 @@
-import { ICategory, IRestaurant } from '@/types/restaurant';
+import { IBanner, ICategory, IRestaurant } from '@/types/restaurant';
 
 export const restaurants: IRestaurant[] = [
   {
@@ -84,5 +84,32 @@ export const categories: ICategory[] = [
     id: 'pasta',
     name: 'Pasta',
     image: require('@/assets/images/burger.png'),
+  },
+];
+
+export const mockBanners: IBanner[] = [
+  {
+    id: 'restaurant_offer',
+    title: 'Order from these restaurants and save',
+    buttonText: 'Browse offer',
+    backgroundColor: '#C8C4E8',
+    imageUrl: require('@/assets/images/banner-1.png'),
+    action: {
+      type: 'navigate',
+      route: '/restaurants/offers',
+    },
+    priority: 1,
+  },
+  {
+    id: 'convenience_items',
+    title: 'Have cleaning supplies and\nother convinence items\ndelivered',
+    buttonText: 'Shop convenience',
+    backgroundColor: '#A8E6CF',
+    imageUrl: require('@/assets/images/banner-1.png'),
+    action: {
+      type: 'navigate',
+      route: '/convenience',
+    },
+    priority: 2,
   },
 ];

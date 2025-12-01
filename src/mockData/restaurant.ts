@@ -1,6 +1,6 @@
-import { IFood } from '@/types/restaurant';
+import { IFood, IRestaurant as IRestaurantType } from '@/types/restaurant';
 
-export interface IRestaurant {
+export interface IRestaurantDetail {
   id: string;
   name: string;
   description: string;
@@ -11,6 +11,98 @@ export interface IRestaurant {
   categories: string[];
   foods: IFood[];
 }
+
+// Mock data for RestaurantCard component
+export const mockRestaurants: IRestaurantType[] = [
+  {
+    id: '1',
+    name: 'Adenine Kitchen',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop',
+    },
+    categories: 'Italian • Pizza • Pasta',
+    rating: 4.5,
+    deliveryFee: 'free',
+    deliveryTime: '20-30 min',
+  },
+  {
+    id: '2',
+    name: 'Burger Palace',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop',
+    },
+    categories: 'American • Burgers • Fast Food',
+    rating: 4.3,
+    deliveryFee: '$2.99',
+    deliveryTime: '15-25 min',
+  },
+  {
+    id: '3',
+    name: 'Sushi Master',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop',
+    },
+    categories: 'Japanese • Sushi • Asian',
+    rating: 4.8,
+    deliveryFee: 'free',
+    deliveryTime: '25-35 min',
+  },
+  {
+    id: '4',
+    name: 'Taco Fiesta',
+    image: {
+      uri: 'https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?q=80&w=1489&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    categories: 'Mexican • Tacos • Spicy',
+    rating: 4.6,
+    deliveryFee: '$1.99',
+    deliveryTime: '20-30 min',
+  },
+  {
+    id: '5',
+    name: 'Green Garden',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
+    },
+    categories: 'Healthy • Salads • Vegan',
+    rating: 4.4,
+    deliveryFee: 'free',
+    deliveryTime: '15-20 min',
+  },
+  {
+    id: '6',
+    name: 'Pizza Corner',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop',
+    },
+    categories: 'Italian • Pizza • Cheese',
+    rating: 4.7,
+    deliveryFee: '$3.50',
+    deliveryTime: '30-40 min',
+  },
+  {
+    id: '7',
+    name: 'Noodle House',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop',
+    },
+    categories: 'Asian • Noodles • Soup',
+    rating: 4.2,
+    deliveryFee: '$2.50',
+    deliveryTime: '25-35 min',
+  },
+  {
+    id: '8',
+    name: 'BBQ Station',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop',
+    },
+    categories: 'BBQ • Grilled • Meat',
+    rating: 4.9,
+    deliveryFee: 'free',
+    deliveryTime: '35-45 min',
+  },
+];
 
 export const mockFoodItems: IFood[] = [
   {
@@ -586,24 +678,3 @@ export const mockFoodItems: IFood[] = [
     preparationTime: '14 min',
   },
 ];
-
-export const mockRestaurant: IRestaurant = {
-  id: 'rest-1',
-  name: 'Spicy Restaurant',
-  description:
-    'Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
-  image: 'restaurant-1.jpg',
-  rating: 4.5,
-  deliveryFee: 'Free',
-  deliveryTime: '20 min',
-  categories: [
-    'All',
-    'Burgers',
-    'Pizza',
-    'Chicken',
-    'Salads',
-    'Seafood',
-    'Pasta',
-  ],
-  foods: mockFoodItems,
-};

@@ -7,12 +7,12 @@ import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 
-interface ICategoryListProps {
+interface ICategoryListBadgeProps {
   selectedCatId: string;
   onCategorySelect: (id: string) => void;
 }
 
-export const CategoryList = (props: ICategoryListProps) => {
+export const CategoryListBadge = (props: ICategoryListBadgeProps) => {
   const { selectedCatId, onCategorySelect } = props;
   const { themed } = useAppTheme();
 

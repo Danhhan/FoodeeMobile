@@ -1,58 +1,51 @@
 import { Image, ImageStyle, Pressable, View, ViewStyle } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
 
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
+import { IRestaurant } from '@/types/restaurant';
 
+import { FeedbackOverlay } from '../FeedbackOverlay';
+import { useAnimatedOverlay } from '../FeedbackOverlay/useAnimatedOverlay';
 import { Icon, PressableIcon } from '../Icon';
 import { Text } from '../Text';
 
 interface RestaurantCardProps {
+  restaurant?: IRestaurant;
   isFavorite?: boolean;
-  onPressFavorite?: (id: number) => void;
+  onPressFavorite?: (id: string) => void;
+  style?: ViewStyle;
 }
 
-export const RestaurantCard = ({ isFavorite = false }: RestaurantCardProps) => {
-  const overlayOpacity = useSharedValue(0);
+export const RestaurantCard = ({
+  restaurant,
+  isFavorite = false,
+  style,
+}: RestaurantCardProps) => {
   const {
-    theme: { colors },
     themed,
+    theme: { colors },
   } = useAppTheme();
 
-  const $overlayAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: overlayOpacity.value,
-    };
-  });
-
-  const onPressIn = () => {
-    overlayOpacity.value = withTiming(0.3, { duration: 150 });
-  };
-
-  const onPressOut = () => {
-    overlayOpacity.value = withTiming(0, { duration: 150 });
-  };
+  const { onPressIn, onPressOut, overlayOpacity } = useAnimatedOverlay();
 
   return (
     <Pressable
-      style={themed($container)}
+      style={[themed($container), style]}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
     >
       <View style={themed($imageContainer)}>
         <Image
           style={themed($image)}
-          source={require('@/assets/images/restaurant-1.png')}
+          source={
+            restaurant?.image || require('@/assets/images/restaurant-1.png')
+          }
         />
-        <Animated.View style={[themed($overlay), $overlayAnimatedStyle]} />
+        <FeedbackOverlay overlayOpacity={overlayOpacity} />
       </View>
       <View style={themed($contentHeader)}>
-        <Text weight="bold">Adenine Kitchen</Text>
+        <Text weight="bold">{restaurant?.name || 'Adenine Kitchen'}</Text>
         <PressableIcon
           onPress={e => {
             e.stopPropagation();
@@ -63,10 +56,14 @@ export const RestaurantCard = ({ isFavorite = false }: RestaurantCardProps) => {
         />
       </View>
       <Text size="xs" color={colors.palette.black200}>
-        $0.49 Delivery Fee | 20-30 min
+        {restaurant?.categories || 'Italian • Pizza • Pasta'}
+      </Text>
+      <Text size="xs" color={colors.palette.black200}>
+        {restaurant?.deliveryFee === 'free' ? 'Free' : restaurant?.deliveryFee}{' '}
+        Delivery Fee | {restaurant?.deliveryTime || '20-30 min'}
       </Text>
       <View style={$styles.rowHCenter}>
-        <Text>4.5</Text>
+        <Text>{restaurant?.rating || 4.5}</Text>
         <Icon icon="rating-filled" size={12} />
         <Text color={colors.palette.black200}>(1000+)</Text>
       </View>
@@ -80,22 +77,13 @@ const $container: ThemedStyle<ViewStyle> = ({ spacing }) => ({
 
 const $imageContainer: ThemedStyle<ViewStyle> = () => ({
   position: 'relative',
-  borderRadius: 20,
+  borderRadius: 10,
   overflow: 'hidden',
 });
 
 const $image: ThemedStyle<ImageStyle> = () => ({
   height: 154,
   width: '100%',
-});
-
-const $overlay: ThemedStyle<ViewStyle> = ({ colors }) => ({
-  backgroundColor: colors.palette.black500,
-  position: 'absolute',
-  bottom: 0,
-  top: 0,
-  left: 0,
-  right: 0,
 });
 
 const $contentHeader: ThemedStyle<ViewStyle> = ({ spacing }) => ({
