@@ -152,7 +152,6 @@ export const TextField = forwardRef(function TextField(
   const disabled = TextInputProps.editable === false || status === 'disabled';
 
   const placeholderContent = placeholder;
-
   const $containerStyles = [$containerStyleOverride];
 
   const $labelStyles = [$labelStyle, LabelTextProps?.style];
@@ -164,9 +163,9 @@ export const TextField = forwardRef(function TextField(
     TextInputProps.multiline && { minHeight: 112 },
     LeftAccessory && { paddingStart: 0 },
     RightAccessory && { paddingEnd: 0 },
+    // focused && { borderColor: colors.palette.primary500 },
+    // { borderWidth: 1 },
     $inputWrapperStyleOverride,
-    focused && { borderColor: colors.palette.info500 },
-    { borderWidth: 1 },
   ];
 
   const $inputStyles: ThemedStyleArray<TextStyle> = [
@@ -264,10 +263,10 @@ const $labelStyle: ThemedStyle<TextStyle> = ({ spacing, colors }) => ({
 
 const $inputWrapperStyle: ThemedStyle<ViewStyle> = ({ colors }) => ({
   alignItems: 'flex-start',
-  borderWidth: 1,
+  // borderWidth: 1,
   borderRadius: 8,
-  backgroundColor: colors.palette.neutral100,
-  borderColor: colors.palette.neutral400,
+  backgroundColor: colors.palette.gray500,
+  // borderColor: colors.palette.neutral400,
   overflow: 'hidden',
 });
 

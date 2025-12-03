@@ -3,6 +3,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import {
   Extrapolation,
   interpolate,
+  SharedValue,
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
@@ -12,9 +13,26 @@ type BottomSheetConfig = {
   borderRadiusRange?: [number, number];
 };
 
-export const useBottomSheetRef = (config?: BottomSheetConfig) => {
+export type ReturnBottomSheet = {
+  ref: React.RefObject<BottomSheetModal | null>;
+  open: (index?: number) => void;
+  close: () => void;
+  expand: () => void;
+  animatedStyle: {
+    transform: {
+      scale: number;
+    }[];
+    borderRadius: number;
+    overflow: 'hidden';
+  };
+  animatedIndex: SharedValue<number>;
+};
+
+export const useBottomSheetRef = (
+  config?: BottomSheetConfig,
+): ReturnBottomSheet => {
   const ref = useRef<BottomSheetModal>(null);
-  const animatedIndex = useSharedValue(-1); // Bắt đầu từ -1 (closed)
+  const animatedIndex = useSharedValue(-1);
   const { scaleRange = [1, 0.88], borderRadiusRange = [0, 20] } = config || {};
 
   const open = useCallback((index?: number) => {

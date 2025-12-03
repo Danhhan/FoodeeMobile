@@ -1,16 +1,17 @@
-import { useMemo, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { useState } from 'react';
 
-import { BottomSheet } from '@/components/BottomSheet';
 import { BottomSheetScreen } from '@/components/BottomSheet/BottomSheetScreen';
-import { HeaderWithBackButton } from '@/components/Header';
 import { RestaurantCard } from '@/components/Restaurant/RestaurantCard';
 import Screen from '@/components/Screen';
+import { mockBanners } from '@/mockData/home';
 import { mockRestaurants } from '@/mockData/restaurant';
 import { $styles } from '@/theme/styles';
 
+import { BannerList } from './components/BannerList';
+import { BottomSheet } from './components/BottomSheet';
 import { CategoryListBadge } from './components/CategoryListBadge';
 import { CategoryListCard } from './components/CategoryListCard';
+import { FreePickSection } from './components/FreePickSection';
 import { GroceryWidget } from './components/GroceryWidget';
 import { Header } from './components/Header';
 import { RestaurantWidget } from './components/RestaurantWidget';
@@ -19,9 +20,6 @@ interface IHomeScreenProps {}
 
 const HomeScreen = ({}: IHomeScreenProps) => {
   const [selectedCatId, setSelectedCatId] = useState('');
-  const { height } = Dimensions.get('window');
-
-  const snapPoints = useMemo(() => [height * 0.93], [height]);
 
   const restaurants1 = mockRestaurants.slice(0, 2);
   const restaurants2 = mockRestaurants.slice(2, 4);
@@ -57,6 +55,7 @@ const HomeScreen = ({}: IHomeScreenProps) => {
             {restaurants1.map((restaurant, index) => (
               <RestaurantCard key={index} restaurant={restaurant} />
             ))}
+            <BannerList banners={mockBanners} />
             {restaurants2.map((restaurant, index) => (
               <RestaurantCard key={index} restaurant={restaurant} />
             ))}
@@ -81,19 +80,12 @@ const HomeScreen = ({}: IHomeScreenProps) => {
             <GroceryWidget title="Fresh grocery" />
             <GroceryWidget title="Sweet treats" />
             <RestaurantCard restaurant={mockRestaurants.slice(14, 15)[0]} />
+            <FreePickSection />
+            {afterQuickEats.map((restaurant, index) => (
+              <RestaurantCard key={index} restaurant={restaurant} isClosed />
+            ))}
           </Screen>
-          <BottomSheet
-            ref={bottomSheetConfig.ref}
-            snapPoints={snapPoints}
-            animatedIndex={bottomSheetConfig.animatedIndex}
-          >
-            <View style={$styles.container}>
-              <HeaderWithBackButton
-                icon="close"
-                onPress={bottomSheetConfig.close}
-              />
-            </View>
-          </BottomSheet>
+          <BottomSheet bottomSheetConfig={bottomSheetConfig} />
         </>
       )}
     </BottomSheetScreen>

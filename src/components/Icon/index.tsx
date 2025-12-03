@@ -138,6 +138,10 @@ export const iconRegistry = {
   grocery: require('@/assets/icons/grocery.png'),
   basket: require('@/assets/icons/basket.png'),
   calendar: require('@/assets/icons/calendar.png'),
+  search: require('@/assets/icons/search.png'),
+  edit: require('@/assets/icons/edit.png'),
+  location: require('@/assets/icons/location.png'),
+  map: require('@/assets/icons/map.png'),
 };
 
 const $imageStyleBase: ImageStyle = {
