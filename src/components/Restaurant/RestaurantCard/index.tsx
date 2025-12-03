@@ -5,22 +5,25 @@ import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 import { IRestaurant } from '@/types/restaurant';
 
-import { FeedbackOverlay } from '../FeedbackOverlay';
-import { useAnimatedOverlay } from '../FeedbackOverlay/useAnimatedOverlay';
-import { Icon, PressableIcon } from '../Icon';
-import { Text } from '../Text';
+import { RestaurantClosedOverlay } from './RestaurantClosedOverlay';
+import { FeedbackOverlay } from '../../FeedbackOverlay';
+import { useAnimatedOverlay } from '../../FeedbackOverlay/useAnimatedOverlay';
+import { Icon, PressableIcon } from '../../Icon';
+import { Text } from '../../Text';
 
 interface RestaurantCardProps {
   restaurant?: IRestaurant;
   isFavorite?: boolean;
   onPressFavorite?: (id: string) => void;
   style?: ViewStyle;
+  isClosed?: boolean;
 }
 
 export const RestaurantCard = ({
   restaurant,
   isFavorite = false,
   style,
+  isClosed = false,
 }: RestaurantCardProps) => {
   const {
     themed,
@@ -34,6 +37,7 @@ export const RestaurantCard = ({
       style={[themed($container), style]}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
+      disabled={isClosed}
     >
       <View style={themed($imageContainer)}>
         <Image
@@ -42,6 +46,9 @@ export const RestaurantCard = ({
             restaurant?.image || require('@/assets/images/restaurant-1.png')
           }
         />
+        {isClosed && (
+          <RestaurantClosedOverlay openTime={restaurant?.openTime} />
+        )}
         <FeedbackOverlay overlayOpacity={overlayOpacity} />
       </View>
       <View style={themed($contentHeader)}>

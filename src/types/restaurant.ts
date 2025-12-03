@@ -6,6 +6,7 @@ export interface IRestaurant {
   rating: number;
   deliveryFee: string;
   deliveryTime: string;
+  openTime?: string;
 }
 
 export interface ICategory {

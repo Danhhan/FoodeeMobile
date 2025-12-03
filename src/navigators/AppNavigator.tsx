@@ -8,6 +8,7 @@ import EmailSentScreen from '@/screens/Auth/EmailSent';
 import ForgotPasswordScreen from '@/screens/Auth/ForgotPassword';
 import EmailSignInScreen from '@/screens/Auth/SignIn/EmailSignIn';
 import EmailSignUpScreen from '@/screens/Auth/SignUp/EmailSignUp';
+import { ChangeAddressScreen } from '@/screens/ChangeAddress';
 import FoodDetailScreen from '@/screens/Food';
 import HomeScreen from '@/screens/Home';
 import OnboardingScreen from '@/screens/Onboarding';
@@ -49,6 +50,14 @@ const AppStack = () => {
       <Stack.Screen
         name="Food"
         component={FoodDetailScreen}
+        options={{
+          presentation: 'fullScreenModal',
+          animation: 'fade_from_bottom',
+        }}
+      />
+      <Stack.Screen
+        name="ChangeAddress"
+        component={ChangeAddressScreen}
         options={{
           presentation: 'fullScreenModal',
           animation: 'fade_from_bottom',

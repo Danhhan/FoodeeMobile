@@ -75,18 +75,19 @@ const $cartBadge: ThemedStyle<TextStyle> = ({ colors }) => ({
 });
 
 interface IHeaderWithBackButtonProps
-  extends Pick<PressableIconProps, 'onPress'> {
+  extends Partial<Pick<PressableIconProps, 'onPress' | 'icon'>> {
   title?: string;
 }
 
 export const HeaderWithBackButton = ({
   onPress,
   title,
+  icon = 'back',
 }: IHeaderWithBackButtonProps) => {
   const { themed } = useAppTheme();
   return (
     <View style={themed($container)}>
-      <PressableIcon icon="back" size={24} onPress={onPress} />
+      <PressableIcon icon={icon} size={24} onPress={onPress} />
       {title && (
         <Text size="md" weight="medium">
           {title}

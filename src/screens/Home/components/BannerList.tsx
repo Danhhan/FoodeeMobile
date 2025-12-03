@@ -52,11 +52,11 @@ const BannerItem = (props: IBanner) => {
   );
 };
 
-interface BannerProps {
+interface BannerListProps {
   banners: IBanner[];
 }
 
-export const Banner = ({ banners }: BannerProps) => {
+export const BannerList = ({ banners }: BannerListProps) => {
   const { themed } = useAppTheme();
   const flatListRef = useRef<FlatList>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import BootSplash from 'react-native-bootsplash';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -10,9 +11,7 @@ import { $styles } from './theme/styles';
 
 function App() {
   useEffect(() => {
-    const init = async () => {
-      // …do multiple sync or async tasks
-    };
+    const init = async () => {};
 
     init().finally(async () => {
       await BootSplash.hide({ fade: true });
@@ -22,9 +21,11 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <GestureHandlerRootView style={$styles.flex1}>
+      <GestureHandlerRootView style={$styles.fill}>
         <ThemeProvider>
-          <AppNavigator />
+          <BottomSheetModalProvider>
+            <AppNavigator />
+          </BottomSheetModalProvider>
         </ThemeProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
