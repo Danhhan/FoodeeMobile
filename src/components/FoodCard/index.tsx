@@ -6,7 +6,7 @@ import { navigate } from '@/navigators/navigationUtilities';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
-import { IFood } from '@/types/restaurant';
+import { IFood } from '@/types/store';
 
 interface IFoodCardProps {
   food: IFood;

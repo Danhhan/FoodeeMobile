@@ -5,7 +5,7 @@ import { Text } from '@/components/Text';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
-import { IRestaurant } from '@/types/restaurant';
+import { IRestaurant } from '@/types/store';
 
 import { Icon } from '../Icon';
 

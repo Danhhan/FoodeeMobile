@@ -23,7 +23,6 @@ export type TabsParamList = {
   Home: undefined;
   Account: undefined;
   Browse: undefined;
-  Grocery: undefined;
   Baskets: undefined;
 };
 

@@ -6,18 +6,18 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { RestaurantCard } from '@/components/Restaurant/RestaurantCard';
+import { StoreCard } from '@/components/Store/StoreCard';
 import { Text } from '@/components/Text';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
-import { IRestaurant } from '@/types/restaurant';
+import { IStore } from '@/types/store';
 
-interface RestaurantWidgetProps {
+interface StoreWidgetProps {
   title: string;
-  listData: IRestaurant[];
+  listData: IStore[];
 }
-export const RestaurantWidget = (props: RestaurantWidgetProps) => {
+export const StoreWidget = (props: StoreWidgetProps) => {
   const { title, listData } = props;
   const { themed } = useAppTheme();
 
@@ -48,9 +48,9 @@ export const RestaurantWidget = (props: RestaurantWidgetProps) => {
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => {
           return (
-            <RestaurantCard
+            <StoreCard
               key={index}
-              restaurant={item}
+              store={item}
               style={themed($itemContainer)}
             />
           );

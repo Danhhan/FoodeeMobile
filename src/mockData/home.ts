@@ -1,4 +1,4 @@
-import { IBanner, ICategory, IRestaurant } from '@/types/restaurant';
+import { IBanner, ICategory, IRestaurant } from '@/types/store';
 
 export const restaurants: IRestaurant[] = [
   {

@@ -28,9 +28,6 @@ const renderTabIcon = ({
     case 'Browse':
       iconName = 'browse';
       break;
-    case 'Grocery':
-      iconName = 'grocery';
-      break;
     case 'Baskets':
       iconName = 'basket';
       break;
@@ -56,7 +53,6 @@ const TabsNavigator = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Browse" component={HomeScreen} />
-      <Tab.Screen name="Grocery" component={HomeScreen} />
       <Tab.Screen name="Baskets" component={HomeScreen} />
       <Tab.Screen name="Account" component={HomeScreen} />
     </Tab.Navigator>

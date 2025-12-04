@@ -3,28 +3,28 @@ import { Image, ImageStyle, Pressable, View, ViewStyle } from 'react-native';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
-import { IRestaurant } from '@/types/restaurant';
+import { IStore } from '@/types/store';
 
-import { RestaurantClosedOverlay } from './RestaurantClosedOverlay';
+import { RestaurantClosedOverlay } from './StoreClosedOverlay';
 import { FeedbackOverlay } from '../../FeedbackOverlay';
 import { useAnimatedOverlay } from '../../FeedbackOverlay/useAnimatedOverlay';
 import { Icon, PressableIcon } from '../../Icon';
 import { Text } from '../../Text';
 
-interface RestaurantCardProps {
-  restaurant?: IRestaurant;
+interface StoreCardProps {
+  store?: IStore;
   isFavorite?: boolean;
   onPressFavorite?: (id: string) => void;
   style?: ViewStyle;
   isClosed?: boolean;
 }
 
-export const RestaurantCard = ({
-  restaurant,
+export const StoreCard = ({
+  store,
   isFavorite = false,
   style,
   isClosed = false,
-}: RestaurantCardProps) => {
+}: StoreCardProps) => {
   const {
     themed,
     theme: { colors },
@@ -42,17 +42,13 @@ export const RestaurantCard = ({
       <View style={themed($imageContainer)}>
         <Image
           style={themed($image)}
-          source={
-            restaurant?.image || require('@/assets/images/restaurant-1.png')
-          }
+          source={store?.image || require('@/assets/images/restaurant-1.png')}
         />
-        {isClosed && (
-          <RestaurantClosedOverlay openTime={restaurant?.openTime} />
-        )}
+        {isClosed && <RestaurantClosedOverlay openTime={store?.openTime} />}
         <FeedbackOverlay overlayOpacity={overlayOpacity} />
       </View>
       <View style={themed($contentHeader)}>
-        <Text weight="bold">{restaurant?.name || 'Adenine Kitchen'}</Text>
+        <Text weight="bold">{store?.name || 'Adenine Kitchen'}</Text>
         <PressableIcon
           onPress={e => {
             e.stopPropagation();
@@ -63,14 +59,14 @@ export const RestaurantCard = ({
         />
       </View>
       <Text size="xs" color={colors.palette.black200}>
-        {restaurant?.categories || 'Italian • Pizza • Pasta'}
+        {store?.categories || 'Italian • Pizza • Pasta'}
       </Text>
       <Text size="xs" color={colors.palette.black200}>
-        {restaurant?.deliveryFee === 'free' ? 'Free' : restaurant?.deliveryFee}{' '}
-        Delivery Fee | {restaurant?.deliveryTime || '20-30 min'}
+        {store?.deliveryFee === 'free' ? 'Free' : store?.deliveryFee} Delivery
+        Fee | {store?.deliveryTime || '20-30 min'}
       </Text>
       <View style={$styles.rowHCenter}>
-        <Text>{restaurant?.rating || 4.5}</Text>
+        <Text>{store?.rating || 4.5}</Text>
         <Icon icon="rating-filled" size={12} />
         <Text color={colors.palette.black200}>(1000+)</Text>
       </View>

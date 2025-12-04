@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { BottomSheetScreen } from '@/components/BottomSheet/BottomSheetScreen';
-import { RestaurantCard } from '@/components/Restaurant/RestaurantCard';
 import Screen from '@/components/Screen';
+import { StoreCard } from '@/components/Store/StoreCard';
 import { mockBanners } from '@/mockData/home';
 import { mockRestaurants } from '@/mockData/restaurant';
 import { $styles } from '@/theme/styles';
@@ -14,7 +14,7 @@ import { CategoryListCard } from './components/CategoryListCard';
 import { FreePickSection } from './components/FreePickSection';
 import { GroceryWidget } from './components/GroceryWidget';
 import { Header } from './components/Header';
-import { RestaurantWidget } from './components/RestaurantWidget';
+import { StoreWidget } from './components/StoreWidget';
 
 interface IHomeScreenProps {}
 
@@ -53,36 +53,36 @@ const HomeScreen = ({}: IHomeScreenProps) => {
             }
           >
             {restaurants1.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <StoreCard key={index} store={restaurant} />
             ))}
             <BannerList banners={mockBanners} />
             {restaurants2.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <StoreCard key={index} store={restaurant} />
             ))}
-            <RestaurantWidget listData={popularList} title="Popular near you" />
+            <StoreWidget listData={popularList} title="Popular near you" />
             {restaurants4.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <StoreCard key={index} store={restaurant} />
             ))}
             <CategoryListCard />
-            <RestaurantCard restaurant={mockRestaurants.slice(14, 15)[0]} />
-            <RestaurantWidget listData={offers} title="Today offers" />
+            <StoreCard store={mockRestaurants.slice(14, 15)[0]} />
+            <StoreWidget listData={offers} title="Today offers" />
             {afterOffers.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <StoreCard key={index} store={restaurant} />
             ))}
-            <RestaurantWidget listData={quickEats} title="Quick Eats" />
+            <StoreWidget listData={quickEats} title="Quick Eats" />
             {afterQuickEats.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <StoreCard key={index} store={restaurant} />
             ))}
-            <RestaurantWidget listData={rewards} title="Rewards for you" />
+            <StoreWidget listData={rewards} title="Rewards for you" />
             {afterRewards.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <StoreCard key={index} store={restaurant} />
             ))}
             <GroceryWidget title="Fresh grocery" />
             <GroceryWidget title="Sweet treats" />
-            <RestaurantCard restaurant={mockRestaurants.slice(14, 15)[0]} />
+            <StoreCard store={mockRestaurants.slice(14, 15)[0]} />
             <FreePickSection />
             {afterQuickEats.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} isClosed />
+              <StoreCard key={index} store={restaurant} isClosed />
             ))}
           </Screen>
           <BottomSheet bottomSheetConfig={bottomSheetConfig} />

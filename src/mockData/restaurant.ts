@@ -1,4 +1,4 @@
-import { IFood, IRestaurant as IRestaurantType } from '@/types/restaurant';
+import { IFood, IRestaurant as IRestaurantType } from '@/types/store';
 
 export interface IRestaurantDetail {
   id: string;

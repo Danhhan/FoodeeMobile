@@ -15,7 +15,7 @@ import { Text } from '@/components/Text';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
-import { IBanner } from '@/types/restaurant';
+import { IBanner } from '@/types/store';
 
 const BannerItem = (props: IBanner) => {
   const { title, buttonText, backgroundColor, imageUrl } = props;
