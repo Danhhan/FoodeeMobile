@@ -186,7 +186,7 @@ export function Button(props: ButtonProps) {
             />
           )}
           {isLoading && <ActivityIndicator color={colors.palette.neutral900} />}
-          {!isLoading && (
+          {!isLoading && text && (
             <Text
               // tx={tx}
               text={text}
@@ -196,6 +196,7 @@ export function Button(props: ButtonProps) {
               {children}
             </Text>
           )}
+          {children}
 
           {!!RightAccessory && (
             <RightAccessory
@@ -244,16 +245,12 @@ const $viewPresets: Record<Presets, ThemedStyleArray<ViewStyle>> = {
   default: [
     $styles.row,
     $baseViewStyle,
-    ({ colors }) => ({
-      borderWidth: 1,
-      borderColor: colors.palette.neutral900,
-      backgroundColor: colors.palette.neutral100,
-    }),
+    ({ colors }) => ({ backgroundColor: colors.palette.white600 }),
   ],
   filled: [
     $styles.row,
     $baseViewStyle,
-    ({ colors }) => ({ backgroundColor: colors.palette.primary500 }),
+    ({ colors }) => ({ backgroundColor: colors.palette.black500 }),
   ],
   reversed: [
     $styles.row,
@@ -296,7 +293,7 @@ const $pressedViewPresets: Record<Presets, ThemedStyle<ViewStyle>> = {
 };
 
 const $pressedTextPresets: Record<Presets, ThemedStyle<TextStyle>> = {
-  default: () => ({ opacity: 0.9 }),
+  default: () => ({ opacity: 0.9, color: 'red' }),
   filled: () => ({ opacity: 0.9 }),
   reversed: () => ({ opacity: 0.9 }),
   empty: () => ({ opacity: 0.9 }),

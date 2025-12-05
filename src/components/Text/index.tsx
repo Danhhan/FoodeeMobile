@@ -101,7 +101,7 @@ export const Text = forwardRef(function Text(
   const { themed } = useAppTheme();
 
   const content = text || children;
-
+  console.log('content', $fontWeightStyles);
   const preset: Presets = props.preset ?? 'default';
   const $styles: StyleProp<TextStyle> = [
     // $rtlStyle,

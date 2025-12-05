@@ -2,24 +2,20 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/Sen-Bold.ttf",
-      "sha1": "f1bfde4e0cbdc0476ad84e91bc7e55af85d6797f"
+      "path": "src/assets/fonts/UberMoveTextBold.otf",
+      "sha1": "a61e10185a33afb250702a97c448e086f7269235"
     },
     {
-      "path": "src/assets/fonts/Sen-ExtraBold.ttf",
-      "sha1": "b5a3cb490f5a44c754fcb1de9fa41f565394aa21"
+      "path": "src/assets/fonts/UberMoveTextLight.otf",
+      "sha1": "5eaf1ec18d8cefb2a77dc17651e1b1332fcef2e4"
     },
     {
-      "path": "src/assets/fonts/Sen-Medium.ttf",
-      "sha1": "ae6d58ddc674ad891536181a061e3002b3f44cb7"
+      "path": "src/assets/fonts/UberMoveTextMedium.otf",
+      "sha1": "ec54abd9181533bf4b13caebf1d06247fc648867"
     },
     {
-      "path": "src/assets/fonts/Sen-Regular.ttf",
-      "sha1": "bc7998b5085c0fc36934dd5e73e1d0a84d6c6450"
-    },
-    {
-      "path": "src/assets/fonts/Sen-SemiBold.ttf",
-      "sha1": "7998c43151a9f1bc19649071984195f4dc4824c7"
+      "path": "src/assets/fonts/UberMoveTextRegular.otf",
+      "sha1": "3d3616c87b7f1b70221dee317c792c5cc630f587"
     }
   ]
 }

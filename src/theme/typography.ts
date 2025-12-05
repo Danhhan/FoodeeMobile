@@ -3,24 +3,12 @@
 
 import { Platform } from 'react-native';
 
-export const customFontsToLoad = {
-  'Sen-Light': 'Sen-Light',
-  'Sen-Regular': 'Sen-Regular',
-  'Sen-Medium': 'Sen-Medium',
-  'Sen-SemiBold': 'Sen-SemiBold',
-  'Sen-Bold': 'Sen-Bold',
-  'Sen-ExtraBold': 'Sen-ExtraBold',
-};
-
 const fonts = {
-  sen: {
-    // Cross-platform Google font.
-    light: 'Sen-Light',
-    normal: 'Sen-Regular',
-    medium: 'Sen-Medium',
-    semiBold: 'Sen-SemiBold',
-    bold: 'Sen-Bold',
-    extraBold: 'Sen-ExtraBold',
+  uberMove: {
+    light: 'UberMoveText-Light',
+    normal: 'UberMoveText-Regular',
+    medium: 'UberMoveText-Medium',
+    bold: 'UberMoveText-Bold',
   },
   helveticaNeue: {
     // iOS only font.
@@ -54,7 +42,7 @@ export const typography = {
   /**
    * The primary font. Used in most places.
    */
-  primary: fonts.sen,
+  primary: fonts.uberMove,
   /**
    * An alternate font used for perhaps titles and stuff.
    */

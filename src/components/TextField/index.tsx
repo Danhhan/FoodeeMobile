@@ -143,6 +143,7 @@ export const TextField = forwardRef(function TextField(
     onIn: onFocus,
     onOut: onBlur,
   } = useInteractionState();
+  console.info('🚀 ~ TextField ~ focused:', focused);
 
   const {
     themed,
@@ -163,10 +164,15 @@ export const TextField = forwardRef(function TextField(
     TextInputProps.multiline && { minHeight: 112 },
     LeftAccessory && { paddingStart: 0 },
     RightAccessory && { paddingEnd: 0 },
-    // focused && { borderColor: colors.palette.primary500 },
-    // { borderWidth: 1 },
+    focused && { borderColor: colors.palette.black500 },
+    !focused && { borderColor: colors.transparent },
+    { borderWidth: 2 },
     $inputWrapperStyleOverride,
   ];
+  console.info(
+    '🚀 ~ TextField ~ focused && { borderColor: colors.palette.black500 }:',
+    focused && { borderColor: colors.palette.black500 },
+  );
 
   const $inputStyles: ThemedStyleArray<TextStyle> = [
     $inputStyle,
@@ -227,8 +233,14 @@ export const TextField = forwardRef(function TextField(
           textAlignVertical="top"
           placeholder={placeholderContent}
           placeholderTextColor={colors.textDim}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={() => {
+            onFocus();
+            console.info('🚀 ~ TextField ~ onFocus ~ onFocus');
+          }}
+          onBlur={() => {
+            onBlur();
+            console.info('🚀 ~ TextField ~ onBlur ~ onBlur');
+          }}
           {...TextInputProps}
           editable={!disabled}
           style={themed($inputStyles)}

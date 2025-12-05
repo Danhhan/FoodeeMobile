@@ -19,19 +19,14 @@ const AuthSocial = ({ mode, onPressButtonEmail }: AuthSocialProps) => {
 
   return (
     <View style={themed($buttonContainer)}>
-      <Button
-        preset="default"
-        text={`${TextMode} with email`}
-        onPress={onPressButtonEmail}
-      />
       <Button preset="default">
         <View style={themed($socialIconContainer)}>
           <Image
             style={themed($socialIcon)}
-            source={require('@/assets/icons/facebook.png')}
+            source={require('@/assets/icons/email.png')}
           />
           <Text color={colors.palette.neutral900} weight="bold">
-            {`${TextMode} with Facebook`}
+            {`${TextMode} with Email`}
           </Text>
         </View>
       </Button>
@@ -62,7 +57,6 @@ const AuthSocial = ({ mode, onPressButtonEmail }: AuthSocialProps) => {
 };
 
 const $buttonContainer: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.xxl,
   gap: spacing.sm,
 });
 

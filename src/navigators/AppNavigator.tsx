@@ -36,7 +36,7 @@ const AppStack = () => {
           backgroundColor: colors.background,
         },
       }}
-      initialRouteName="Tabs"
+      initialRouteName="Auth"
     >
       <Stack.Screen name="EmailSignIn" component={EmailSignInScreen} />
       <Stack.Screen name="EmailSignUp" component={EmailSignUpScreen} />

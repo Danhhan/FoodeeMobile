@@ -88,7 +88,7 @@ export function Icon(props: IconProps) {
   const {
     icon,
     color,
-    size,
+    size = 24,
     style: $imageStyleOverride,
     containerStyle: $containerStyleOverride,
     ...viewProps
@@ -142,6 +142,8 @@ export const iconRegistry = {
   edit: require('@/assets/icons/edit.png'),
   location: require('@/assets/icons/location.png'),
   map: require('@/assets/icons/map.png'),
+  arrowLeft: require('@/assets/icons/arrow-left.png'),
+  arrowRight: require('@/assets/icons/arrow-right.png'),
 };
 
 const $imageStyleBase: ImageStyle = {
