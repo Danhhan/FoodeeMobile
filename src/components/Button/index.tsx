@@ -92,6 +92,10 @@ export interface ButtonProps extends PressableProps {
    * An optional boolean to show loading state
    */
   isLoading?: boolean;
+  /**
+   * Whether button should fit content instead of full width
+   */
+  fitContent?: boolean;
 }
 
 /**
@@ -125,6 +129,7 @@ export function Button(props: ButtonProps) {
     disabledStyle: $disabledViewStyleOverride,
     textDecorationLine,
     isLoading,
+    fitContent = false,
     ...rest
   } = props;
 
@@ -134,6 +139,11 @@ export function Button(props: ButtonProps) {
   } = useAppTheme();
 
   const preset: Presets = props.preset ?? 'default';
+
+  const $disabledViewStyle: StyleProp<ViewStyle> = [
+    themed($viewPresets.default),
+    $disabledViewStyleOverride,
+  ];
   /**
    * @param {PressableStateCallbackType} root0 - The root object containing the pressed state.
    * @param {boolean} root0.pressed - The pressed state.
@@ -144,12 +154,17 @@ export function Button(props: ButtonProps) {
   }: PressableStateCallbackType): StyleProp<ViewStyle> {
     return [
       themed($viewPresets[preset]),
+      !!disabled && $disabledViewStyle,
+      fitContent && { alignSelf: 'flex-start' },
       $viewStyleOverride,
       !!pressed &&
         themed([$pressedViewPresets[preset], $pressedViewStyleOverride]),
-      !!disabled && $disabledViewStyleOverride,
     ];
   }
+  const $disabledTextStyle: StyleProp<TextStyle> = [
+    { color: colors.palette.gray700 },
+    $disabledTextStyleOverride,
+  ];
   /**
    * @param {PressableStateCallbackType} root0 - The root object containing the pressed state.
    * @param {boolean} root0.pressed - The pressed state.
@@ -163,7 +178,7 @@ export function Button(props: ButtonProps) {
       $textStyleOverride,
       !!pressed &&
         themed([$pressedTextPresets[preset], $pressedTextStyleOverride]),
-      !!disabled && $disabledTextStyleOverride,
+      !!disabled && $disabledTextStyle,
       textDecorationLine && { textDecorationLine },
     ];
   }
@@ -229,7 +244,7 @@ const $baseTextStyle: ThemedStyle<TextStyle> = ({ typography, colors }) => ({
   flexShrink: 1,
   flexGrow: 0,
   zIndex: 2,
-  color: colors.palette.neutral100,
+  color: colors.palette.white500,
 });
 
 const $rightAccessoryStyle: ThemedStyle<ViewStyle> = ({ spacing }) => ({
@@ -267,7 +282,7 @@ const $viewPresets: Record<Presets, ThemedStyleArray<ViewStyle>> = {
 const $textPresets: Record<Presets, ThemedStyleArray<TextStyle>> = {
   default: [
     $baseTextStyle,
-    ({ colors }) => ({ color: colors.palette.neutral900 }),
+    ({ colors }) => ({ color: colors.palette.black500 }),
   ],
   filled: [$baseTextStyle],
   reversed: [
@@ -282,8 +297,8 @@ const $textPresets: Record<Presets, ThemedStyleArray<TextStyle>> = {
 };
 
 const $pressedViewPresets: Record<Presets, ThemedStyle<ViewStyle>> = {
-  default: ({ colors }) => ({ backgroundColor: colors.palette.neutral200 }),
-  filled: ({ colors }) => ({ backgroundColor: colors.palette.neutral900 }),
+  default: ({ colors }) => ({ backgroundColor: colors.palette.gray700 }),
+  filled: ({ colors }) => ({ backgroundColor: colors.palette.black300 }),
   reversed: ({ colors }) => ({ backgroundColor: colors.palette.neutral700 }),
   empty: ({ colors }) => ({
     backgroundColor: colors.palette.neutral200,
@@ -293,7 +308,7 @@ const $pressedViewPresets: Record<Presets, ThemedStyle<ViewStyle>> = {
 };
 
 const $pressedTextPresets: Record<Presets, ThemedStyle<TextStyle>> = {
-  default: () => ({ opacity: 0.9, color: 'red' }),
+  default: () => ({ opacity: 0.9 }),
   filled: () => ({ opacity: 0.9 }),
   reversed: () => ({ opacity: 0.9 }),
   empty: () => ({ opacity: 0.9 }),

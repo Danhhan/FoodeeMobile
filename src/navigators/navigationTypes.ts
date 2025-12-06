@@ -6,10 +6,6 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 export type AppStackParamList = {
   Onboarding: undefined;
   Auth: undefined;
-  EmailSignIn: undefined;
-  EmailSignUp: undefined;
-  ForgotPassword: undefined;
-  EmailSent: undefined;
   Home: undefined;
   Account: undefined;
   Notification: undefined;

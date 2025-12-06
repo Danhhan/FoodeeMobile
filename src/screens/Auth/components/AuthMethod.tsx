@@ -25,7 +25,7 @@ export const AuthMethod = ({ title, icon, onPress }: AuthMethodProps) => {
     >
       <View style={themed($socialIconContainer)}>
         <Image style={themed($socialIcon)} source={icon} />
-        <Text color={colors.palette.neutral900} weight="bold">
+        <Text color={colors.palette.neutral900}>
           {`Continue with ${title}`}
         </Text>
       </View>

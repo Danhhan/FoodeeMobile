@@ -4,10 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ErrorBoundary } from '@/components/Screen/ErrorScreen/ErrorBoundary';
 import Config from '@/config';
 import AuthScreen from '@/screens/Auth';
-import EmailSentScreen from '@/screens/Auth/EmailSent';
-import ForgotPasswordScreen from '@/screens/Auth/ForgotPassword';
-import EmailSignInScreen from '@/screens/Auth/SignIn/EmailSignIn';
-import EmailSignUpScreen from '@/screens/Auth/SignUp/EmailSignUp';
 import { ChangeAddressScreen } from '@/screens/ChangeAddress';
 import FoodDetailScreen from '@/screens/Food';
 import HomeScreen from '@/screens/Home';
@@ -38,11 +34,7 @@ const AppStack = () => {
       }}
       initialRouteName="Auth"
     >
-      <Stack.Screen name="EmailSignIn" component={EmailSignInScreen} />
-      <Stack.Screen name="EmailSignUp" component={EmailSignUpScreen} />
       <Stack.Screen name="Auth" component={AuthScreen} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-      <Stack.Screen name="EmailSent" component={EmailSentScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Tabs" component={TabsNavigator} />

@@ -101,7 +101,6 @@ export const Text = forwardRef(function Text(
   const { themed } = useAppTheme();
 
   const content = text || children;
-  console.log('content', $fontWeightStyles);
   const preset: Presets = props.preset ?? 'default';
   const $styles: StyleProp<TextStyle> = [
     // $rtlStyle,
@@ -144,6 +143,12 @@ const $baseStyle: ThemedStyle<TextStyle> = theme => ({
   color: theme.colors.text,
 });
 
+const $formHelperStyle: ThemedStyle<TextStyle> = ({ colors }) => ({
+  ...$sizeStyles.sm,
+  ...$fontWeightStyles.normal,
+  color: colors.error,
+});
+
 const $presets: Record<Presets, ThemedStyleArray<TextStyle>> = {
   default: [$baseStyle],
   bold: [$baseStyle, { ...$fontWeightStyles.bold }],
@@ -156,7 +161,7 @@ const $presets: Record<Presets, ThemedStyleArray<TextStyle>> = {
   ],
   subheading: [$baseStyle, { ...$sizeStyles.lg, ...$fontWeightStyles.medium }],
   formLabel: [$baseStyle, { ...$fontWeightStyles.medium }],
-  formHelper: [$baseStyle, { ...$sizeStyles.sm, ...$fontWeightStyles.normal }],
+  formHelper: [$baseStyle, $formHelperStyle],
 };
 
 // style text transform

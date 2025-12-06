@@ -143,7 +143,6 @@ export const TextField = forwardRef(function TextField(
     onIn: onFocus,
     onOut: onBlur,
   } = useInteractionState();
-  console.info('🚀 ~ TextField ~ focused:', focused);
 
   const {
     themed,
@@ -160,19 +159,15 @@ export const TextField = forwardRef(function TextField(
   const $inputWrapperStyles = [
     $styles.row,
     $inputWrapperStyle,
-    status === 'error' && { borderColor: colors.error },
     TextInputProps.multiline && { minHeight: 112 },
     LeftAccessory && { paddingStart: 0 },
     RightAccessory && { paddingEnd: 0 },
     focused && { borderColor: colors.palette.black500 },
     !focused && { borderColor: colors.transparent },
+    status === 'error' && { borderColor: colors.error },
     { borderWidth: 2 },
     $inputWrapperStyleOverride,
   ];
-  console.info(
-    '🚀 ~ TextField ~ focused && { borderColor: colors.palette.black500 }:',
-    focused && { borderColor: colors.palette.black500 },
-  );
 
   const $inputStyles: ThemedStyleArray<TextStyle> = [
     $inputStyle,
@@ -233,15 +228,10 @@ export const TextField = forwardRef(function TextField(
           textAlignVertical="top"
           placeholder={placeholderContent}
           placeholderTextColor={colors.textDim}
-          onFocus={() => {
-            onFocus();
-            console.info('🚀 ~ TextField ~ onFocus ~ onFocus');
-          }}
-          onBlur={() => {
-            onBlur();
-            console.info('🚀 ~ TextField ~ onBlur ~ onBlur');
-          }}
+          onFocus={onFocus}
+          onBlur={onBlur}
           {...TextInputProps}
+          selectionColor={colors.palette.black500}
           editable={!disabled}
           style={themed($inputStyles)}
         />
@@ -275,10 +265,8 @@ const $labelStyle: ThemedStyle<TextStyle> = ({ spacing, colors }) => ({
 
 const $inputWrapperStyle: ThemedStyle<ViewStyle> = ({ colors }) => ({
   alignItems: 'flex-start',
-  // borderWidth: 1,
   borderRadius: 8,
-  backgroundColor: colors.palette.gray500,
-  // borderColor: colors.palette.neutral400,
+  backgroundColor: colors.palette.white600,
   overflow: 'hidden',
 });
 
@@ -290,7 +278,7 @@ const $inputStyle: ThemedStyle<TextStyle> = ({
   flex: 1,
   alignSelf: 'stretch',
   fontFamily: typography.primary.normal,
-  color: colors.palette.neutral800,
+  color: colors.palette.black500,
   fontSize: 16,
   height: 34,
   // https://github.com/facebook/react-native/issues/21720#issuecomment-532642093
@@ -298,6 +286,8 @@ const $inputStyle: ThemedStyle<TextStyle> = ({
   paddingHorizontal: 0,
   marginVertical: spacing.xs,
   marginHorizontal: spacing.sm,
+  // cursor color
+  cursorColor: colors.palette.neutral800,
 });
 
 const $helperStyle: ThemedStyle<TextStyle> = ({ spacing, colors }) => ({

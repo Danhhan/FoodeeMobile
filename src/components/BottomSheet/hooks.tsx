@@ -36,13 +36,11 @@ export const useBottomSheetRef = (
   const { scaleRange = [1, 0.88], borderRadiusRange = [0, 20] } = config || {};
 
   const open = useCallback((index?: number) => {
-    if (index !== undefined) {
-      ref.current?.present();
+    ref.current?.present();
+    if (index !== undefined && index >= 0) {
       setTimeout(() => {
-        ref.current?.snapToIndex(index);
+        ref.current?.snapToIndex(Math.min(index));
       }, 100);
-    } else {
-      ref.current?.present();
     }
   }, []);
 
