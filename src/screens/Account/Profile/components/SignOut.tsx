@@ -4,12 +4,12 @@ import { BottomSheet as BaseBottomSheet } from '@/components/BottomSheet';
 import { useBottomSheetRef } from '@/components/BottomSheet/hooks';
 import { Button } from '@/components/Button';
 import { Text } from '@/components/Text';
+import { navigate } from '@/navigators/navigationUtilities';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
-import { navigate } from '@/navigators/navigationUtilities';
 
-export const SignOutBottomSheet = () => {
+export const SignOut = () => {
   const {
     themed,
     theme: { colors },
@@ -41,7 +41,7 @@ export const SignOutBottomSheet = () => {
           <Button
             preset="filled"
             onPress={() => {
-              navigate('Auth');
+              navigate('Auth', { animation: 'none' });
               bottomSheetConfig.close();
             }}
           >

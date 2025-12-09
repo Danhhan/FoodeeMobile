@@ -10,6 +10,7 @@ import {
 
 import { HeaderWithBackButton } from '@/components/Header';
 import { Icon } from '@/components/Icon';
+import Screen from '@/components/Screen';
 import { Text } from '@/components/Text';
 import { AccountStackScreenProps } from '@/navigators/navigationTypes';
 import { useAppTheme } from '@/theme/context';
@@ -17,7 +18,7 @@ import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 import { useSafeAreaInsetsStyle } from '@/utils/useSafeAreaInsetsStyle';
 
-import { SignOutBottomSheet } from './components/ResendBottomSheet';
+import { SignOut } from './components/SignOut';
 
 interface ProfileScreenProps extends AccountStackScreenProps<'Profile'> {}
 
@@ -30,7 +31,7 @@ export const ProfileScreen = ({ navigation }: ProfileScreenProps) => {
   const $insets = useSafeAreaInsetsStyle(['top', 'bottom']);
 
   return (
-    <View style={themed($wrapper)}>
+    <Screen preset="fixed" contentContainerStyle={themed($wrapper)}>
       <View style={[themed($container), { paddingTop: $insets.paddingTop }]}>
         <HeaderWithBackButton onPress={() => navigation.goBack()} />
       </View>
@@ -83,10 +84,9 @@ export const ProfileScreen = ({ navigation }: ProfileScreenProps) => {
             </View>
           </Pressable>
         </View>
-
-        <SignOutBottomSheet />
+        <SignOut />
       </ScrollView>
-    </View>
+    </Screen>
   );
 };
 
@@ -113,10 +113,6 @@ const $savedPlace: ThemedStyle<ViewStyle> = ({ colors, spacing }) => ({
 const $home: ThemedStyle<ViewStyle> = ({ colors }) => ({
   borderBottomWidth: 1,
   borderBottomColor: colors.palette.gray200,
-});
-
-const $signOut: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.lg,
 });
 
 const $profileInfo: ThemedStyle<ViewStyle> = () => ({

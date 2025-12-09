@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { TextStyle, View, ViewStyle } from 'react-native';
+import { Pressable, TextStyle, View, ViewStyle } from 'react-native';
 
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 
-import { PressableIcon, PressableIconProps } from '../Icon';
+import { Icon, PressableIcon, PressableIconProps } from '../Icon';
 import { Text } from '../Text';
 
 export const Header = memo(() => {
@@ -84,10 +84,22 @@ export const HeaderWithBackButton = ({
   title,
   icon = 'back',
 }: IHeaderWithBackButtonProps) => {
-  const { themed } = useAppTheme();
+  const {
+    themed,
+    theme: { colors },
+  } = useAppTheme();
+
   return (
     <View style={themed($container)}>
-      <PressableIcon icon={icon} size={24} onPress={onPress} />
+      <Pressable
+        onPress={onPress}
+        style={({ pressed }) => [
+          $backButton,
+          pressed ? { backgroundColor: colors.palette.gray600 } : undefined,
+        ]}
+      >
+        <Icon icon={icon} size={18} />
+      </Pressable>
       {title && (
         <Text size="md" weight="medium">
           {title}
@@ -104,3 +116,10 @@ const $container: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
   paddingBottom: spacing.md,
   backgroundColor: colors.background,
 });
+
+const $backButton: ViewStyle = {
+  width: 37,
+  height: 37,
+  ...$styles.center,
+  borderRadius: 50,
+};
