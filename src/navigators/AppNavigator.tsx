@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { ErrorBoundary } from '@/components/Screen/ErrorScreen/ErrorBoundary';
+import { SplashScreen } from '@/components/Screen/SplashScreen';
 import Config from '@/config';
 import { ProfileScreen } from '@/screens/Account/Profile';
 import AuthScreen from '@/screens/Auth';
@@ -20,9 +22,23 @@ import { TabsNavigator } from './TabsNavigator';
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
 const AppStack = () => {
+  const [visible, setVisible] = useState(true);
   const {
     theme: { colors },
   } = useAppTheme();
+
+  if (visible) {
+    return (
+      <SplashScreen
+        onAnimationEnd={() => {
+          // if (!isLoaded) {
+          //   console.log('setVisible(false)');
+          // }
+          setVisible(false);
+        }}
+      />
+    );
+  }
 
   return (
     <Stack.Navigator
