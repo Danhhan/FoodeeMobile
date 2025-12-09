@@ -97,9 +97,10 @@ export const HeaderWithBackButton = ({
   );
 };
 
-const $container: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+const $container: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   gap: spacing.md,
   paddingBottom: spacing.md,
+  backgroundColor: colors.background,
 });

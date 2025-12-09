@@ -8,6 +8,7 @@ import { Icon } from '@/components/Icon';
 import { Text } from '@/components/Text';
 import { TextField } from '@/components/TextField';
 import { OTPField } from '@/components/TextField/OTPField';
+import { navigate } from '@/navigators/navigationUtilities';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
@@ -57,8 +58,9 @@ export const AuthEmail = ({ onBack }: AuthEmailProps) => {
       setIsLoading(true);
       onFetchAuthVerification()
         .then(() => {
-          setErrorMsg("The email passcode you've entered is incorrect");
-          setOtpValues(DEFAULT_OTP_VALUES);
+          // setErrorMsg("The email passcode you've entered is incorrect");
+          // setOtpValues(DEFAULT_OTP_VALUES);
+          navigate('Tabs');
         })
         .finally(() => setIsLoading(false));
     }

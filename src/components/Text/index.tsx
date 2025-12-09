@@ -88,8 +88,6 @@ export const Text = forwardRef(function Text(
   const {
     weight,
     size,
-    // tx,
-    // txOptions,
     text,
     children,
     color,
@@ -103,7 +101,6 @@ export const Text = forwardRef(function Text(
   const content = text || children;
   const preset: Presets = props.preset ?? 'default';
   const $styles: StyleProp<TextStyle> = [
-    // $rtlStyle,
     themed($presets[preset]),
     weight && $fontWeightStyles[weight],
     size && $sizeStyles[size],

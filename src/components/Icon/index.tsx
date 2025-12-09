@@ -144,6 +144,8 @@ export const iconRegistry = {
   map: require('@/assets/icons/map.png'),
   arrowLeft: require('@/assets/icons/arrow-left.png'),
   arrowRight: require('@/assets/icons/arrow-right.png'),
+  homeLine: require('@/assets/icons/home-line.png'),
+  work: require('@/assets/icons/work.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

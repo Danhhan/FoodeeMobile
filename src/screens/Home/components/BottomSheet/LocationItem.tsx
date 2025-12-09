@@ -27,7 +27,7 @@ export const LocationItem = (props: LocationItemProps) => {
         <Text>{name}</Text>
       </View>
       {btnType === 'button' ? (
-        <Button style={themed($locationButton)}>{txtBtn}</Button>
+        <Button style={themed($locationButton)} text={txtBtn} />
       ) : (
         <TouchableWithoutFeedback>
           <Icon containerStyle={themed($editIcon)} icon="edit" size={20} />
@@ -47,7 +47,6 @@ const $locationContent: ThemedStyle<ViewStyle> = () => ({
   gap: 22,
 });
 const $locationButton: ThemedStyle<ViewStyle> = ({ colors }) => ({
-  width: 94,
   borderRadius: 50,
   borderWidth: 0,
   backgroundColor: colors.palette.gray500,

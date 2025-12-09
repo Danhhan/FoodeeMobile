@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { ErrorBoundary } from '@/components/Screen/ErrorScreen/ErrorBoundary';
 import Config from '@/config';
+import { ProfileScreen } from '@/screens/Account/Profile';
 import AuthScreen from '@/screens/Auth';
 import { ChangeAddressScreen } from '@/screens/ChangeAddress';
 import FoodDetailScreen from '@/screens/Food';
@@ -32,7 +33,7 @@ const AppStack = () => {
           backgroundColor: colors.background,
         },
       }}
-      initialRouteName="Auth"
+      initialRouteName="Tabs"
     >
       <Stack.Screen name="Auth" component={AuthScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />

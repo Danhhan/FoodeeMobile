@@ -1,5 +1,8 @@
 import { ComponentProps } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  NavigatorScreenParams,
+} from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // App Stack Navigator types
@@ -13,14 +16,23 @@ export type AppStackParamList = {
   Restaurant: { restaurantId: string };
   Food: { foodId: string };
   ChangeAddress: undefined;
+  Profile: undefined;
 };
 
 export type TabsParamList = {
   Home: undefined;
-  Account: undefined;
   Browse: undefined;
   Baskets: undefined;
+  Account: NavigatorScreenParams<AccountStackParamList>;
 };
+
+export type AccountStackParamList = {
+  Account: undefined;
+  Profile: undefined;
+};
+
+export type AccountStackScreenProps<T extends keyof AccountStackParamList> =
+  NativeStackScreenProps<AccountStackParamList, T>;
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> =
   NativeStackScreenProps<AppStackParamList, T>;

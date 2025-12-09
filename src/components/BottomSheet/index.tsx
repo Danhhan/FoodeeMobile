@@ -42,6 +42,7 @@ export const BottomSheet = forwardRef<BottomSheetModal, BottomSheetProps>(
     );
 
     const renderBackdrop = useCallback(
+      // eslint-disable-next-line @typescript-eslint/no-shadow
       (props: BottomSheetBackdropProps) => (
         <GHBottomSheetBackdrop
           {...props}
@@ -76,8 +77,6 @@ export const BottomSheet = forwardRef<BottomSheetModal, BottomSheetProps>(
         onChange={handleSheetChanges}
         animatedIndex={animatedIndex}
         enableDynamicSizing={false}
-        animationConfigs={{ duration: 100 }}
-        handleComponent={null}
         {...props}
       >
         <GHBottomSheetView style={themed($contentContainer)}>
@@ -103,6 +102,4 @@ const $sheetBackground: ThemedStyle<ViewStyle> = ({ colors }) => ({
   backgroundColor: colors.background,
   borderTopLeftRadius: 12,
   borderTopRightRadius: 12,
-  paddingVertical: 0,
-  margin: 0,
 });

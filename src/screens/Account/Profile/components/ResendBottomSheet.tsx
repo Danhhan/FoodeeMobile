@@ -1,4 +1,4 @@
-import { View, ViewStyle } from 'react-native';
+import { Pressable, View, ViewStyle } from 'react-native';
 
 import { BottomSheet as BaseBottomSheet } from '@/components/BottomSheet';
 import { useBottomSheetRef } from '@/components/BottomSheet/hooks';
@@ -7,8 +7,9 @@ import { Text } from '@/components/Text';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
+import { navigate } from '@/navigators/navigationUtilities';
 
-export const ResendBottomSheet = () => {
+export const SignOutBottomSheet = () => {
   const {
     themed,
     theme: { colors },
@@ -18,14 +19,15 @@ export const ResendBottomSheet = () => {
 
   return (
     <>
-      <Button
-        fitContent
-        style={themed($resendButton)}
-        pressedStyle={{ backgroundColor: colors.palette.gray700 }}
+      <Pressable
+        style={({ pressed }) => [
+          themed($signOut),
+          pressed ? { backgroundColor: colors.palette.gray600 } : undefined,
+        ]}
         onPress={() => bottomSheetConfig.open()}
       >
-        <Text>Resend</Text>
-      </Button>
+        <Text>Sign out</Text>
+      </Pressable>
       <BaseBottomSheet
         ref={bottomSheetConfig.ref}
         snapPoints={['30%']}
@@ -33,12 +35,17 @@ export const ResendBottomSheet = () => {
         handleComponent={null}
       >
         <View style={themed($sheetHeader)}>
-          <Text>Resend code to:</Text>
-          <Text>hanminhdanh1325@gmail.com</Text>
+          <Text weight="bold">Are you sure you want to sign out?</Text>
         </View>
         <View style={themed($sheetContent)}>
-          <Button preset="filled">
-            <Text color={colors.palette.white500}>Resend</Text>
+          <Button
+            preset="filled"
+            onPress={() => {
+              navigate('Auth');
+              bottomSheetConfig.close();
+            }}
+          >
+            <Text color={colors.palette.white500}>Confirm sign out</Text>
           </Button>
           <Button onPress={() => bottomSheetConfig.close()}>
             <Text>Cancel</Text>
@@ -62,9 +69,12 @@ const $sheetHeader: ThemedStyle<ViewStyle> = ({ colors }) => ({
   padding: 12,
 });
 
-const $resendButton: ThemedStyle<ViewStyle> = () => ({
-  minWidth: 90,
-  borderRadius: 50,
-  marginBottom: 10,
-  minHeight: 30,
+const $signOut: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
+  marginTop: spacing.lg,
+  ...$styles.row,
+  ...$styles.alignItemsCenter,
+  ...$styles.container,
+  gap: spacing.lg,
+  backgroundColor: colors.background,
+  paddingVertical: spacing.md,
 });

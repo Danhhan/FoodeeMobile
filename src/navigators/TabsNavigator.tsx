@@ -1,13 +1,27 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RouteProp } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Icon, IconTypes } from '@/components/Icon';
+import { AccountScreen } from '@/screens/Account';
+import { ProfileScreen } from '@/screens/Account/Profile';
 import HomeScreen from '@/screens/Home';
 import { useAppTheme } from '@/theme/context';
 
-import { TabsParamList } from './navigationTypes';
+import { AccountStackParamList, TabsParamList } from './navigationTypes';
 
 const Tab = createBottomTabNavigator<TabsParamList>();
+
+const Stack = createNativeStackNavigator<AccountStackParamList>();
+
+export const AccountStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Account" component={AccountScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+    </Stack.Navigator>
+  );
+};
 
 const renderTabIcon = ({
   route,
@@ -37,6 +51,7 @@ const renderTabIcon = ({
 
   return <Icon icon={iconName} size={18} color={color} />;
 };
+
 const TabsNavigator = () => {
   const {
     theme: { colors },
@@ -54,7 +69,7 @@ const TabsNavigator = () => {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Browse" component={HomeScreen} />
       <Tab.Screen name="Baskets" component={HomeScreen} />
-      <Tab.Screen name="Account" component={HomeScreen} />
+      <Tab.Screen name="Account" component={AccountStackNavigator} />
     </Tab.Navigator>
   );
 };
