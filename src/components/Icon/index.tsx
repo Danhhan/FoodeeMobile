@@ -146,6 +146,9 @@ export const iconRegistry = {
   arrowRight: require('@/assets/icons/arrow-right.png'),
   homeLine: require('@/assets/icons/home-line.png'),
   work: require('@/assets/icons/work.png'),
+  heart: require('@/assets/icons/heart.png'),
+  wallet: require('@/assets/icons/wallet.png'),
+  ticket: require('@/assets/icons/ticket.png'),
 };
 
 const $imageStyleBase: ImageStyle = {
