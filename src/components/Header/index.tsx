@@ -77,20 +77,24 @@ const $cartBadge: ThemedStyle<TextStyle> = ({ colors }) => ({
 interface IHeaderWithBackButtonProps
   extends Partial<Pick<PressableIconProps, 'onPress' | 'icon'>> {
   title?: string;
+  style?: ViewStyle;
 }
 
 export const HeaderWithBackButton = ({
   onPress,
   title,
   icon = 'back',
+  style,
 }: IHeaderWithBackButtonProps) => {
   const {
     themed,
     theme: { colors },
   } = useAppTheme();
 
+  const $containerStyles = [themed($container), style];
+
   return (
-    <View style={themed($container)}>
+    <View style={$containerStyles}>
       <Pressable
         onPress={onPress}
         style={({ pressed }) => [
@@ -98,7 +102,7 @@ export const HeaderWithBackButton = ({
           pressed ? { backgroundColor: colors.palette.gray600 } : undefined,
         ]}
       >
-        <Icon icon={icon} size={18} />
+        <Icon icon={icon} size={20} />
       </Pressable>
       {title && (
         <Text size="md" weight="medium">
@@ -109,12 +113,11 @@ export const HeaderWithBackButton = ({
   );
 };
 
-const $container: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
+const $container: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   gap: spacing.md,
-  paddingBottom: spacing.md,
-  backgroundColor: colors.background,
+  height: 54,
 });
 
 const $backButton: ViewStyle = {

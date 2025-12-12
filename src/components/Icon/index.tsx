@@ -149,6 +149,7 @@ export const iconRegistry = {
   heart: require('@/assets/icons/heart.png'),
   wallet: require('@/assets/icons/wallet.png'),
   ticket: require('@/assets/icons/ticket.png'),
+  pencil: require('@/assets/icons/pencil.png'),
 };
 
 const $imageStyleBase: ImageStyle = {

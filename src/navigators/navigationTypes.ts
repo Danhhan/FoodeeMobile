@@ -16,7 +16,8 @@ export type AppStackParamList = {
   Restaurant: { restaurantId: string };
   Food: { foodId: string };
   ChangeAddress: undefined;
-  Profile: undefined;
+  EditProfile: undefined;
+  DisplayName: undefined;
 };
 
 export type TabsParamList = {
@@ -26,7 +27,7 @@ export type TabsParamList = {
   Account: NavigatorScreenParams<AccountStackParamList>;
 };
 
-export type AccountStackParamList = {
+export type AccountStackParamList = AppStackParamList & {
   Account: undefined;
   Profile: undefined;
 };

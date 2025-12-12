@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ErrorBoundary } from '@/components/Screen/ErrorScreen/ErrorBoundary';
 import { SplashScreen } from '@/components/Screen/SplashScreen';
 import Config from '@/config';
+import { EditProfileScreen } from '@/screens/Account/EditProfile';
+import { DisplayNameScreen } from '@/screens/Account/EditProfile/DisplayName';
 import AuthScreen from '@/screens/Auth';
 import { ChangeAddressScreen } from '@/screens/ChangeAddress';
 import FoodDetailScreen from '@/screens/Food';
@@ -55,6 +57,13 @@ const AppStack = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Tabs" component={TabsNavigator} />
       <Stack.Screen name="Restaurant" component={RestaurantDetailScreen} />
+      {/* EDIT PROFILE SCREENS */}
+      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+      <Stack.Screen
+        name="DisplayName"
+        component={DisplayNameScreen}
+        options={{ animation: 'none' }}
+      />
       <Stack.Screen
         name="Food"
         component={FoodDetailScreen}

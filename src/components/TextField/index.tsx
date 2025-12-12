@@ -162,7 +162,10 @@ export const TextField = forwardRef(function TextField(
     TextInputProps.multiline && { minHeight: 112 },
     LeftAccessory && { paddingStart: 0 },
     RightAccessory && { paddingEnd: 0 },
-    focused && { borderColor: colors.palette.black500 },
+    focused && {
+      borderColor: colors.palette.black500,
+      backgroundColor: colors.palette.white100,
+    },
     !focused && { borderColor: colors.transparent },
     status === 'error' && { borderColor: colors.error },
     { borderWidth: 2 },
@@ -260,7 +263,7 @@ export const TextField = forwardRef(function TextField(
 
 const $labelStyle: ThemedStyle<TextStyle> = ({ spacing, colors }) => ({
   marginBottom: spacing.xs,
-  color: colors.palette.neutral600,
+  color: colors.palette.black500,
 });
 
 const $inputWrapperStyle: ThemedStyle<ViewStyle> = ({ colors }) => ({

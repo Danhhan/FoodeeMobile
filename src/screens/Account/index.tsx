@@ -15,7 +15,8 @@ import { Text } from '@/components/Text';
 import { AccountStackScreenProps } from '@/navigators/navigationTypes';
 import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
-import { ThemedStyle } from '@/theme/types';
+
+import { Avatar } from './components/Avatar';
 
 interface AccountScreenProps extends AccountStackScreenProps<'Account'> {}
 
@@ -26,7 +27,6 @@ interface MenuItem {
 
 export const AccountScreen = ({ navigation }: AccountScreenProps) => {
   const {
-    themed,
     theme: { colors },
   } = useAppTheme();
 
@@ -77,10 +77,7 @@ export const AccountScreen = ({ navigation }: AccountScreenProps) => {
           activeOpacity={0.6}
           onPress={() => navigation.navigate('Profile')}
         >
-          <Image
-            style={themed($avatar)}
-            source={require('@/assets/images/default-avatar.png')}
-          />
+          <Avatar size="sm" />
         </TouchableOpacity>
       </View>
 
@@ -135,11 +132,6 @@ export const AccountScreen = ({ navigation }: AccountScreenProps) => {
     </Screen>
   );
 };
-
-const $avatar: ThemedStyle<ImageStyle> = () => ({
-  height: 66,
-  width: 66,
-});
 
 const $quickActionsContainer: ViewStyle = {
   flexDirection: 'row',

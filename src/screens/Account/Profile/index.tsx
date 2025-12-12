@@ -1,9 +1,8 @@
 import {
-  Image,
-  ImageStyle,
   Pressable,
   ScrollView,
   TextStyle,
+  TouchableWithoutFeedback,
   View,
   ViewStyle,
 } from 'react-native';
@@ -18,6 +17,7 @@ import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 import { useSafeAreaInsetsStyle } from '@/utils/useSafeAreaInsetsStyle';
 
+import { Avatar } from '../components/Avatar';
 import { SignOut } from './components/SignOut';
 
 interface ProfileScreenProps extends AccountStackScreenProps<'Profile'> {}
@@ -38,16 +38,19 @@ export const ProfileScreen = ({ navigation }: ProfileScreenProps) => {
       <ScrollView>
         <View style={themed($container)}>
           <View style={themed($profileInfo)}>
-            <Image
-              style={themed($avatar)}
-              source={require('@/assets/images/default-avatar.png')}
-            />
+            <Avatar size="md" />
             <Text style={themed($fullName)} weight="medium" size="md">
               Dolly Sheep
             </Text>
-            <Text weight="medium" color={colors.palette.primary500}>
-              Edit account
-            </Text>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('EditProfile')}
+            >
+              <View>
+                <Text weight="medium" color={colors.palette.primary500}>
+                  Edit account
+                </Text>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
 
@@ -124,11 +127,6 @@ const $profileInfo: ThemedStyle<ViewStyle> = () => ({
 const $container: ThemedStyle<ViewStyle> = ({ colors }) => ({
   backgroundColor: colors.background,
   ...$styles.container,
-});
-
-const $avatar: ThemedStyle<ImageStyle> = () => ({
-  height: 66,
-  width: 66,
 });
 
 const $fullName: ThemedStyle<TextStyle> = () => ({
