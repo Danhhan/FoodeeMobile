@@ -6,7 +6,9 @@ import { ErrorBoundary } from '@/components/Screen/ErrorScreen/ErrorBoundary';
 import { SplashScreen } from '@/components/Screen/SplashScreen';
 import Config from '@/config';
 import { EditProfileScreen } from '@/screens/Account/EditProfile';
+import { ChangePasswordScreen } from '@/screens/Account/EditProfile/ChangePassword';
 import { DisplayNameScreen } from '@/screens/Account/EditProfile/DisplayName';
+import { EmailScreen } from '@/screens/Account/EditProfile/Email';
 import AuthScreen from '@/screens/Auth';
 import { ChangeAddressScreen } from '@/screens/ChangeAddress';
 import FoodDetailScreen from '@/screens/Food';
@@ -62,6 +64,16 @@ const AppStack = () => {
       <Stack.Screen
         name="DisplayName"
         component={DisplayNameScreen}
+        options={{ animation: 'none' }}
+      />
+      <Stack.Screen
+        name="Email"
+        component={EmailScreen}
+        options={{ animation: 'none' }}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={ChangePasswordScreen}
         options={{ animation: 'none' }}
       />
       <Stack.Screen

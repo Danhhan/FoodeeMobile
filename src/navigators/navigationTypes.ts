@@ -18,6 +18,8 @@ export type AppStackParamList = {
   ChangeAddress: undefined;
   EditProfile: undefined;
   DisplayName: undefined;
+  Email: undefined;
+  ChangePassword: undefined;
 };
 
 export type TabsParamList = {

@@ -13,15 +13,14 @@ import { useAppTheme } from '@/theme/context';
 import { $styles } from '@/theme/styles';
 import { ThemedStyle } from '@/theme/types';
 
-interface DisplayNameScreenProps extends AppStackScreenProps<'DisplayName'> {}
+interface EmailScreenProps extends AppStackScreenProps<'Email'> {}
 
-export const DisplayNameScreen = ({ navigation }: DisplayNameScreenProps) => {
+export const EmailScreen = ({ navigation }: EmailScreenProps) => {
   const {
     theme: { colors },
     themed,
   } = useAppTheme();
-  const [firstName, setFirstName] = useState('Dolly');
-  const [lastName, setLastName] = useState('Sheep');
+  const [firstName, setFirstName] = useState('dolly@gmail.com');
 
   return (
     <Screen
@@ -38,14 +37,14 @@ export const DisplayNameScreen = ({ navigation }: DisplayNameScreenProps) => {
       contentContainerStyle={$styles.container}
     >
       <Text weight="bold" size="xxl">
-        Name
+        Email
       </Text>
       <Text style={themed($description)} size="xs">
-        This is the name you would like other people to use when referring to
-        you
+        You&apos;ll use this email to receive messages, sign in and recover your
+        account.
       </Text>
       <TextField
-        label="First name"
+        label="Email"
         value={firstName}
         autoCorrect={false}
         autoCapitalize="none"
@@ -66,29 +65,9 @@ export const DisplayNameScreen = ({ navigation }: DisplayNameScreenProps) => {
           )
         }
       />
-      <TextField
-        containerStyle={themed($lastNameInput)}
-        label="Last name"
-        value={lastName}
-        autoCorrect={false}
-        autoCapitalize="none"
-        spellCheck={false}
-        keyboardType="email-address"
-        returnKeyLabel="Send"
-        returnKeyType="send"
-        onChangeText={value => setLastName(value)}
-        RightAccessory={() =>
-          lastName && (
-            <PressableIcon
-              containerStyle={themed($rightAccessoryStyle)}
-              color={colors.palette.white500}
-              size={18}
-              icon="close"
-              activeOpacity={1}
-            />
-          )
-        }
-      />
+      <Text style={themed($subDescription)} size="xs">
+        A verification code will be sent to this email.
+      </Text>
       <Button style={themed($updateButton)} text="Update" preset="filled" />
     </Screen>
   );
@@ -98,8 +77,9 @@ const $description: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   marginVertical: spacing.lg,
 });
 
-const $lastNameInput: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  marginTop: spacing.md,
+const $subDescription: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
+  marginVertical: spacing.md,
+  color: colors.palette.gray900,
 });
 
 const $updateButton: ThemedStyle<ViewStyle> = ({ spacing }) => ({

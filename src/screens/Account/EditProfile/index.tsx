@@ -32,10 +32,12 @@ export const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
     {
       label: 'Email',
       value: 'john.doe@example.com',
+      onPress: () => navigation.navigate('Email'),
     },
     {
       label: 'Password',
       value: '●●●●●●',
+      onPress: () => navigation.navigate('ChangePassword'),
     },
   ];
 
