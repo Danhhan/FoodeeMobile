@@ -207,6 +207,7 @@ export function Button(props: ButtonProps) {
               text={text}
               txOptions={txOptions}
               style={$textStyle(state)}
+              weight="normal"
             >
               {children}
             </Text>
@@ -236,10 +237,9 @@ const $baseViewStyle: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   overflow: 'hidden',
 });
 
-const $baseTextStyle: ThemedStyle<TextStyle> = ({ typography, colors }) => ({
+const $baseTextStyle: ThemedStyle<TextStyle> = ({ colors }) => ({
   fontSize: 16,
   lineHeight: 20,
-  fontFamily: typography.primary.bold,
   textAlign: 'center',
   flexShrink: 1,
   flexGrow: 0,

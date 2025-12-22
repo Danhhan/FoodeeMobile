@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Icon, IconTypes } from '@/components/Icon';
 import { AccountScreen } from '@/screens/Account';
 import { ProfileScreen } from '@/screens/Account/Profile';
+import { BasketsScreen } from '@/screens/Baskets';
 import HomeScreen from '@/screens/Home';
 import { useAppTheme } from '@/theme/context';
 
@@ -68,7 +69,7 @@ const TabsNavigator = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Browse" component={HomeScreen} />
-      <Tab.Screen name="Baskets" component={HomeScreen} />
+      <Tab.Screen name="Baskets" component={BasketsScreen} />
       <Tab.Screen name="Account" component={AccountStackNavigator} />
     </Tab.Navigator>
   );

@@ -58,7 +58,7 @@ export const AccountScreen = ({ navigation }: AccountScreenProps) => {
 
   return (
     <Screen
-      safeAreaEdges={['bottom', 'top']}
+      safeAreaEdges={['top']}
       preset="fixed"
       contentContainerStyle={$styles.fill}
     >

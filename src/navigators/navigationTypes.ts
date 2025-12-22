@@ -32,6 +32,7 @@ export type TabsParamList = {
 export type AccountStackParamList = AppStackParamList & {
   Account: undefined;
   Profile: undefined;
+  Baskets: undefined;
 };
 
 export type AccountStackScreenProps<T extends keyof AccountStackParamList> =
